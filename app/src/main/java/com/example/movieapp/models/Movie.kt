@@ -1,12 +1,17 @@
 package com.example.movieapp.models
 
-data class Movie(
-    var name : String,
-    var rating : String,
-    var reviews : String,
-    var duration : String,
-    var year_rating : String,
-    var like : Boolean,
-    var image : String,
-    var genre : String
+import com.google.gson.annotations.SerializedName
+
+
+data class Movie (
+    @SerializedName("kinopoiskId"      ) var kinopoiskId      : Int?                 = null,
+    @SerializedName("nameRu"           ) var nameRu           : String?              = null,
+    @SerializedName("nameEn"           ) var nameEn           : String?              = null,
+    @SerializedName("year"             ) var year             : Int?                 = null,
+    @SerializedName("posterUrl"        ) var posterUrl        : String?              = null,
+    @SerializedName("posterUrlPreview" ) var posterUrlPreview : String?              = null,
+    @SerializedName("countries"        ) var countries        : ArrayList<Countries> = arrayListOf(),
+    @SerializedName("genres"           ) var genres           : ArrayList<Genres>    = arrayListOf(),
+    @SerializedName("duration"         ) var duration         : Int?                 = null,
+    @SerializedName("premiereRu"       ) var premiereRu       : String?              = null
 )

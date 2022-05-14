@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="180dp"
+    android:layout_height="60dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="12dp"
+    app:cardBackgroundColor="@android:color/transparent"
+    android:layout_margin="5dp"
+    >
+    <ImageView
+        android:id="@+id/actorPicture"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:src="@drawable/actor_example"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/actorName"
+        android:layout_marginTop="14dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="Зак Брафф"
+        android:textSize="12dp"
+        app:layout_constraintStart_toEndOf="@+id/actorPicture"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/actorRole"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_light"
+        android:text="Dr. Jonh 'J.D.' Dorian"
+        android:textSize="9dp"
+        app:layout_constraintStart_toEndOf="@+id/actorPicture"
+        app:layout_constraintTop_toBottomOf="@+id/actorName" />
+</androidx.constraintlayout.widget.ConstraintLayout>

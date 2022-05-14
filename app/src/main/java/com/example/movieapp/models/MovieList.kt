@@ -1,5 +1,8 @@
 package com.example.movieapp.models
 
+import com.google.gson.annotations.SerializedName
+
 data class MovieList(
-    val MovieList : List<Movie>
+    @SerializedName("total" ) var total : Int?             = null,
+    @SerializedName("items" ) var items : ArrayList<Movie> = arrayListOf()
 )

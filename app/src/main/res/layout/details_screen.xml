@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragments.DetailsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -14,7 +14,6 @@
             android:layout_width="match_parent"
             android:layout_height="500dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/clinic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,7 +30,6 @@
             android:id="@+id/logo"
             android:layout_width="200dp"
             android:layout_height="100dp"
-            android:src="@drawable/logo"
             app:layout_constraintBottom_toBottomOf="@+id/cover"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -140,6 +138,7 @@
             tools:layout_editor_absoluteX="43dp" />
 
         <TextView
+            android:layout_marginTop="8dp"
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -157,7 +156,7 @@
         <LinearLayout
             android:id="@+id/actorsButton"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -168,6 +167,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/poppins_bold"
+                android:paddingTop="12dp"
                 android:text="Актеры"
                 android:textAlignment="center"
                 android:textSize="18dp"
@@ -175,6 +175,7 @@
 
             <TextView
                 android:layout_width="50dp"
+                android:paddingTop="13dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="230dp"
                 android:fontFamily="@font/poppins_bold"
@@ -191,6 +192,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/actorsRV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -207,7 +209,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="200dp" />
+            app:layout_constraintGuide_begin="196dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

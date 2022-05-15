@@ -28,7 +28,6 @@ class SeriesAdapter : RecyclerView.Adapter<SeriesAdapter.SeriesViewHolder>() {
             genres = series.genres[0].genre
             name.text = series.nameRu
             Glide.with(itemView).load(series.posterUrlPreview).into(image)
-            Log.e("AAA", "image set")
             genre.text = genres
         }
     }

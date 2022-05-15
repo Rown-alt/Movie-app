@@ -1,5 +1,6 @@
 package com.example.movieapp.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
 import com.example.movieapp.models.Person
+import com.example.movieapp.models.Staff
 
 class ActorsAdapter : RecyclerView.Adapter<ActorsAdapter.ActorViewHolder>() {
     var staff : List<Person> = listOf()
@@ -36,5 +38,11 @@ class ActorsAdapter : RecyclerView.Adapter<ActorsAdapter.ActorViewHolder>() {
 
     override fun getItemCount(): Int {
         return staff.size
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setActors(staff : List<Person>){
+        this.staff = staff
+        notifyDataSetChanged()
     }
 }

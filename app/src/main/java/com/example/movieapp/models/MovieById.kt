@@ -3,7 +3,7 @@ package com.example.movieapp.models
 import com.google.gson.annotations.SerializedName
 
 data class MovieById(
-    @SerializedName("kinopoiskId"                ) var kinopoiskId                : Int?                 = null,
+    @SerializedName("kinopoiskId"                ) var kinopoiskId                : Int                        ,
     @SerializedName("imdbId"                     ) var imdbId                     : String?              = null,
     @SerializedName("nameRu"                     ) var nameRu                     : String?              = null,
     @SerializedName("nameEn"                     ) var nameEn                     : String?              = null,
@@ -15,7 +15,7 @@ data class MovieById(
     @SerializedName("reviewsCount"               ) var reviewsCount               : Int?                 = null,
     @SerializedName("ratingGoodReview"           ) var ratingGoodReview           : Double?              = null,
     @SerializedName("ratingGoodReviewVoteCount"  ) var ratingGoodReviewVoteCount  : Int?                 = null,
-    @SerializedName("ratingKinopoisk"            ) var ratingKinopoisk            : Double?              = null,
+    @SerializedName("ratingKinopoisk"            ) var ratingKinopoisk            : Double                     ,
     @SerializedName("ratingKinopoiskVoteCount"   ) var ratingKinopoiskVoteCount   : Int?                 = null,
     @SerializedName("ratingImdb"                 ) var ratingImdb                 : Double?              = null,
     @SerializedName("ratingImdbVoteCount"        ) var ratingImdbVoteCount        : Int?                 = null,
@@ -23,7 +23,7 @@ data class MovieById(
     @SerializedName("ratingFilmCriticsVoteCount" ) var ratingFilmCriticsVoteCount : Int?                 = null,
     @SerializedName("ratingAwait"                ) var ratingAwait                : String?              = null,
     @SerializedName("ratingAwaitCount"           ) var ratingAwaitCount           : Int?                 = null,
-    @SerializedName("ratingRfCritics"            ) var ratingRfCritics            : Int?                 = null,
+    @SerializedName("ratingRfCritics"            ) var ratingRfCritics            : Double?                 = null,
     @SerializedName("ratingRfCriticsVoteCount"   ) var ratingRfCriticsVoteCount   : Int?                 = null,
     @SerializedName("webUrl"                     ) var webUrl                     : String?              = null,
     @SerializedName("year"                       ) var year                       : Int?                 = null,

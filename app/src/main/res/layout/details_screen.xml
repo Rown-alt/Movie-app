@@ -4,7 +4,8 @@
     tools:context=".fragments.DetailsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -44,7 +45,6 @@
             android:layout_marginBottom="76dp"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/roboto"
-            android:text="Scrubs"
             android:textColor="@color/white"
             android:textSize="14dp"
             android:textStyle="bold"
@@ -58,7 +58,6 @@
             android:layout_marginBottom="76dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="sans-serif-medium"
-            android:text="8.5"
             android:textAlignment="center"
             android:textColor="#5CB900"
             android:textSize="14dp"
@@ -73,7 +72,6 @@
             android:layout_marginBottom="52dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/roboto"
-            android:text="2001"
             android:textColor="#B9B9B9"
             android:textSize="14dp"
             android:textStyle="bold"
@@ -87,7 +85,6 @@
             android:layout_marginBottom="52dp"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/roboto"
-            android:text="комедия, драма"
             android:textColor="#B9B9B9"
             android:textSize="14dp"
             android:textStyle="bold"
@@ -101,7 +98,6 @@
             android:layout_marginBottom="28dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/roboto"
-            android:text="США,"
             android:textColor="#B9B9B9"
             android:textSize="14dp"
             android:textStyle="bold"
@@ -113,7 +109,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto"
-            android:text="22 мин,"
             android:layout_marginBottom="28dp"
             android:layout_marginStart="8dp"
             android:textColor="#B9B9B9"
@@ -129,7 +124,6 @@
             android:fontFamily="@font/roboto"
             android:layout_marginBottom="28dp"
             android:layout_marginStart="2dp"
-            android:text="16+"
             android:textColor="#B9B9B9"
             android:textSize="14dp"
             android:textStyle="bold"
@@ -145,8 +139,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/poppins"
-            android:text="Отучившись четыре года в медицинской школе, Джон Дориан приходит работать интерном в клинику. Вместе с ним здесь же будет применять полученные знания и его лучший друг со времен колледжа Крис Терк. Не имеющие опыта практической работы, молодые специалисты сразу же погружаются в хаотический мир жизни больницы..."
-
             android:textSize="14dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -174,12 +166,12 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/actorsCount"
                 android:layout_width="50dp"
                 android:paddingTop="13dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="230dp"
+                android:layout_marginStart="210dp"
                 android:fontFamily="@font/poppins_bold"
-                android:text="973"
                 android:textAlignment="center"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -209,7 +201,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="196dp" />
+            app:layout_constraintGuide_begin="172dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

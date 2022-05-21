@@ -1,4 +1,4 @@
-package com.example.movieapp.viewmodels.ActorFragment
+package com.example.movieapp.viewmodels.actorFragment
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -12,9 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
 import com.example.movieapp.fragments.DetailsFragmentDirections
-import com.example.movieapp.fragments.MoviesFragmentDirections
 import com.example.movieapp.models.Person
-import com.example.movieapp.models.Staff
 
 class ActorsAdapter : RecyclerView.Adapter<ActorsAdapter.ActorViewHolder>() {
     var staff : List<Person> = listOf()

@@ -3,7 +3,7 @@ package com.example.movieapp.models
 import com.google.gson.annotations.SerializedName
 
 data class Person(
-    @SerializedName("staffId"        ) var staffId        : Int?    = null,
+    @SerializedName("staffId"        ) var staffId        : Int           ,
     @SerializedName("nameRu"         ) var nameRu         : String? = null,
     @SerializedName("nameEn"         ) var nameEn         : String? = null,
     @SerializedName("description"    ) var description    : String? = null,

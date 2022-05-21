@@ -12,10 +12,10 @@
         android:id="@+id/actorPicture"
         android:layout_width="40dp"
         android:layout_height="60dp"
-        android:src="@drawable/actor_example"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:src="@color/light_gray"
         />
 
     <TextView

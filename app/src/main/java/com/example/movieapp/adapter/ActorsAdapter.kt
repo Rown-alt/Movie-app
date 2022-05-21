@@ -1,14 +1,18 @@
 package com.example.movieapp.adapter
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
+import com.example.movieapp.fragments.DetailsFragmentDirections
+import com.example.movieapp.fragments.MoviesFragmentDirections
 import com.example.movieapp.models.Person
 import com.example.movieapp.models.Staff
 
@@ -34,6 +38,12 @@ class ActorsAdapter : RecyclerView.Adapter<ActorsAdapter.ActorViewHolder>() {
 
     override fun onBindViewHolder(holder: ActorViewHolder, position: Int) {
         holder.bind(staff[position])
+
+        holder.itemView.setOnClickListener{
+            val action = DetailsFragmentDirections.actionDetailsFragmentToActorFragment(staff[position].staffId)
+            it.findNavController().navigate(action)
+            Log.e("AAA", "Data sent to ActorFragment")
+        }
     }
 
     override fun getItemCount(): Int {

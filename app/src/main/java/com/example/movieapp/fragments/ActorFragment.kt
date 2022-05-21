@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
+import com.example.movieapp.api.RetrofitInstance
 import com.example.movieapp.viewmodels.ActorFragment.ActorFragmentViewModel
 
 class ActorFragment : Fragment(R.layout.actor_details) {
@@ -23,12 +24,11 @@ class ActorFragment : Fragment(R.layout.actor_details) {
         val actorName : TextView = view.findViewById(R.id.actorDetailsNameTV)
         val actorNameOriginal : TextView = view.findViewById(R.id.actorDetailsNameOriginalTV)
         val actorProfession : TextView = view.findViewById(R.id.actorsDetailsProfessionTV)
-
         actorViewModel.actorById.observe(viewLifecycleOwner){   actor->
             Glide.with(view).load(actor.posterUrl).into(actorPhoto)
             actorName.text = actor.nameRu
             actorNameOriginal.text = actor.nameEn
-            actorProfession.text = actor.description
+            actorProfession.text = actor.professionText
         }
     }
 

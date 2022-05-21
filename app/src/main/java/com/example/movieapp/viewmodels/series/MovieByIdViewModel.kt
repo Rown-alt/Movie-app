@@ -7,17 +7,20 @@ import com.example.movieapp.api.RetrofitInstance
 import com.example.movieapp.models.MovieById
 import kotlinx.coroutines.launch
 
-class SeriesViewModel : ViewModel() {
+class MovieByIdViewModel : ViewModel() {
     var series = MutableLiveData<ArrayList<MovieById>>()
     var arraySeries = ArrayList<MovieById>()
     var id = ArrayList<Int>()
-    fun addSeries(id : Int){
+    fun addSeries(){
         viewModelScope.launch {
-            arraySeries.add(RetrofitInstance.api.getMovie(id))
+            arraySeries.add(RetrofitInstance.api.getMovie(251568))
+            arraySeries.add(RetrofitInstance.api.getMovie(401522))
+            arraySeries.add(RetrofitInstance.api.getMovie(502838))
         }
     }
     fun getSeries(){
         viewModelScope.launch {
+            addSeries()
             series.value = arraySeries
         }
     }

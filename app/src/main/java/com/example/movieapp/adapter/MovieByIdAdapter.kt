@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
+import com.example.movieapp.fragments.MoviesFragmentDirections
 import com.example.movieapp.models.MovieById
 
-class SeriesAdapter : RecyclerView.Adapter<SeriesAdapter.SeriesViewHolder>() {
+class MovieByIdAdapter : RecyclerView.Adapter<MovieByIdAdapter.SeriesViewHolder>() {
 
     private var seriesList = ArrayList<MovieById>()
 
@@ -40,6 +42,12 @@ class SeriesAdapter : RecyclerView.Adapter<SeriesAdapter.SeriesViewHolder>() {
 
     override fun onBindViewHolder(holder: SeriesViewHolder, position: Int) {
         holder.bind(seriesList[position])
+
+        holder.itemView.setOnClickListener{
+            val action = MoviesFragmentDirections.actionMoviesFragmentToDetailsFragment(seriesList[position].kinopoiskId)
+            it.findNavController().navigate(action)
+            Log.e("AAA", "Data sent")
+        }
     }
 
     override fun getItemCount(): Int {

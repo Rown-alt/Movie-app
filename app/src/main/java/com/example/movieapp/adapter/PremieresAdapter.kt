@@ -14,7 +14,7 @@ import com.example.movieapp.R
 import com.example.movieapp.fragments.MoviesFragmentDirections
 import com.example.movieapp.models.Movie
 
-class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class PremieresAdapter : RecyclerView.Adapter<PremieresAdapter.MovieViewHolder>() {
 
     private var listMovie : ArrayList<Movie> = arrayListOf()
 
@@ -47,7 +47,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
         holder.itemView.setOnClickListener{
             val action = MoviesFragmentDirections.actionMoviesFragmentToDetailsFragment(listMovie[position].kinopoiskId)
             it.findNavController().navigate(action)
-            Log.e("AAA", "Data sent")
+            Log.e("AAA", "Data sent to DetailsFragment")
         }
     }
 

@@ -1,6 +1,7 @@
 package com.example.movieapp.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
 import com.example.movieapp.adapter.ActorsAdapter
+import com.example.movieapp.api.RetrofitInstance
 import com.example.movieapp.viewmodels.detailsFragment.DetailsFragmentViewModel
 import com.example.movieapp.viewmodels.staff.ActorsViewModel
 
@@ -78,6 +80,10 @@ class DetailsFragment : Fragment(R.layout.details_screen) {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        if (detailsFragmentViewModel.movieById == null) {
+            val intent = Intent(activity, DetailsFragment::class.java)
+            startActivity(intent)
+        }
         detailsFragmentViewModel.getMovieById(detailsArgs.filmId)
         actorsViewModel.getStaff(detailsArgs.filmId)
     }

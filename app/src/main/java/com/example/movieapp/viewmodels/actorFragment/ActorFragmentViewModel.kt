@@ -13,24 +13,33 @@ class ActorFragmentViewModel : ViewModel() {
     var actorById = MutableLiveData<ActorById>()
     var filmsById = MutableLiveData<ArrayList<MovieById>>()
     private var arrayFilms = ArrayList<Films>()
-    var arrayFilmsById = ArrayList<MovieById>()
+    private var arrayFilmsById = ArrayList<MovieById>()
     fun getActorById(id : Int) {
         viewModelScope.launch {
-            actorById.value = RetrofitInstance.api.getActorById(id)
+            RetrofitInstance.api.getActorById(id).onSuccess {
+                actorById.value = it
+            }
         }
     }
     fun getMovies(id: Int){
         viewModelScope.launch {
-            arrayFilms = RetrofitInstance.api.getActorById(id).films
-
+            RetrofitInstance.api.getActorById(id).onSuccess {
+                arrayFilms = it.films
+            }
             if (arrayFilms.size <= 5){
                 for (i in arrayFilms){
-                    arrayFilmsById.add(RetrofitInstance.api.getMovie(i.filmId))
+                    RetrofitInstance.api.getMovie(i.filmId).onSuccess {
+                        arrayFilmsById.add(it)
+                    }
+
                 }
             }
             else{
                 for (i in 0..5){
-                    arrayFilmsById.add((RetrofitInstance.api.getMovie(arrayFilms[i].filmId)))
+                    RetrofitInstance.api.getMovie(arrayFilms[i].filmId).onSuccess {
+                        arrayFilmsById.add(it)
+                    }
+
                 }
             }
             filmsById.value = arrayFilmsById

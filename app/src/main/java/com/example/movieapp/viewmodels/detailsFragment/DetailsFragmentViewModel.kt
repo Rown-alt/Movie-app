@@ -12,7 +12,9 @@ class DetailsFragmentViewModel() : ViewModel() {
     var movieById = MutableLiveData<MovieById>()
     fun getMovieById(id : Int) {
         viewModelScope.launch {
-            movieById.value = RetrofitInstance.api.getMovie(id)
+            RetrofitInstance.api.getMovie(id).onSuccess {
+                movieById.value = it
+            }
         }
     }
 }

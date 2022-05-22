@@ -13,9 +13,13 @@ class MovieByIdViewModel : ViewModel() {
     var id = ArrayList<Int>()
     fun addSeries(){
         viewModelScope.launch {
-            arraySeries.add(RetrofitInstance.api.getMovie(251568))
-            arraySeries.add(RetrofitInstance.api.getMovie(401522))
-            arraySeries.add(RetrofitInstance.api.getMovie(502838))
+            RetrofitInstance.api.getMovie(251568).onSuccess {
+                arraySeries.add(it)
+            }
+            RetrofitInstance.api.getMovie(401522).onSuccess {
+                arraySeries.add(it) }
+            RetrofitInstance.api.getMovie(502838).onSuccess {
+                arraySeries.add(it) }
         }
     }
     fun getSeries(){

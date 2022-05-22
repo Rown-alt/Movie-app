@@ -8,6 +8,7 @@ object RetrofitInstance {
         Retrofit.Builder()
             .baseUrl("https://kinopoiskapiunofficial.tech/api/")
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(ResultCallAdapterFactory())
             .build()
         }
     val api:KinoPoiskAPI by lazy {

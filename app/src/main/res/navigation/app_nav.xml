@@ -22,5 +22,22 @@
         <argument
             android:name="filmId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_detailsFragment_to_actorFragment"
+            app:destination="@id/actorFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/actorFragment"
+        android:name="com.example.movieapp.fragments.ActorFragment"
+        android:label="ActorFragment"
+        tools:layout="@layout/actor_details">
+        <argument
+            android:name="actorId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/errorFragment"
+        android:name="com.example.movieapp.fragments.ErrorFragment"
+        android:label="ErrorFragment"
+        tools:layout="@layout/error_screen"/>
 </navigation>

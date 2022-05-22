@@ -12,7 +12,10 @@ class ActorsViewModel : ViewModel() {
 
     fun getStaff(id : Int){
         viewModelScope.launch {
-            actors.value = RetrofitInstance.api.getStaff(id)
+            RetrofitInstance.api.getStaff(id).onSuccess {
+                actors.value = it
+            }
+
         }
     }
 }

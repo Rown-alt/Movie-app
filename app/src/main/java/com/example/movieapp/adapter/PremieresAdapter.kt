@@ -25,10 +25,9 @@ class PremieresAdapter : RecyclerView.Adapter<PremieresAdapter.MovieViewHolder>(
         private val image : ImageView = view.findViewById(R.id.picture)
         private val name : TextView = view.findViewById(R.id.name)
         private val genre : TextView = view.findViewById(R.id.genre)
-
+        private val rating : TextView = view.findViewById(R.id.filmRating)
         fun bind (movie : Movie){
             genres = movie.genres[0].genre
-
             name.text = movie.nameRu
             genre.text = genres
             Glide.with(itemView).load(movie.posterUrlPreview).into(image)

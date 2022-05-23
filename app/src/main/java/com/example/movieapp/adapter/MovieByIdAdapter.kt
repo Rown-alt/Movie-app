@@ -1,6 +1,7 @@
 package com.example.movieapp.adapter
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.example.movieapp.R
 import com.example.movieapp.fragments.MoviesFragmentDirections
 import com.example.movieapp.models.MovieById
+import org.w3c.dom.Text
 
 class MovieByIdAdapter : RecyclerView.Adapter<MovieByIdAdapter.SeriesViewHolder>() {
 
@@ -25,8 +27,16 @@ class MovieByIdAdapter : RecyclerView.Adapter<MovieByIdAdapter.SeriesViewHolder>
         private val image : ImageView = view.findViewById(R.id.picture)
         private val name : TextView = view.findViewById(R.id.name)
         private val genre : TextView = view.findViewById(R.id.genre)
-
+        private val rating : TextView = view.findViewById(R.id.filmRating)
         fun bind(series : MovieById){
+            rating.text = series.ratingKinopoisk.toString()
+            if (series.ratingKinopoisk < 5)
+            {
+                rating.setTextColor(Color.parseColor("#FFAD0000"))
+            }
+            else if (series.ratingKinopoisk< 7.0){
+                rating.setTextColor(Color.parseColor("#FFAFAFAF"))
+            }
             genres = series.genres[0].genre
             name.text = series.nameRu
             Glide.with(itemView).load(series.posterUrlPreview).into(image)

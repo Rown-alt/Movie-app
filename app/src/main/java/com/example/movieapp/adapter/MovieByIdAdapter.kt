@@ -28,7 +28,9 @@ class MovieByIdAdapter : RecyclerView.Adapter<MovieByIdAdapter.SeriesViewHolder>
         private val name : TextView = view.findViewById(R.id.name)
         private val genre : TextView = view.findViewById(R.id.genre)
         private val rating : TextView = view.findViewById(R.id.filmRating)
+        private val ratingRectangle : ImageView = view.findViewById(R.id.filmRatingRectangle)
         fun bind(series : MovieById){
+            ratingRectangle.setImageResource(R.drawable.rectangle_24)
             rating.text = series.ratingKinopoisk.toString()
             if (series.ratingKinopoisk < 5)
             {

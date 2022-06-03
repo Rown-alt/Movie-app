@@ -54,6 +54,7 @@
         app:layout_constraintTop_toBottomOf="@id/actorDetailsNameOriginalTV" />
 
     <Button
+        android:id="@+id/aboutPersonBtn"
         android:layout_width="180dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"

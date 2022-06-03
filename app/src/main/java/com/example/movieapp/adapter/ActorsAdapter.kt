@@ -30,7 +30,7 @@ class ActorsAdapter : RecyclerView.Adapter<ActorsAdapter.ActorViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.actor, parent, false)
+            .inflate(R.layout.person, parent, false)
         return ActorViewHolder(view)
     }
 

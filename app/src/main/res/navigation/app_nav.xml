@@ -28,16 +28,23 @@
     </fragment>
     <fragment
         android:id="@+id/actorFragment"
-        android:name="com.example.movieapp.fragments.ActorFragment"
-        android:label="ActorFragment"
-        tools:layout="@layout/actor_details">
+        android:name="com.example.movieapp.fragments.PersonFragment"
+        android:label="About Person"
+        tools:layout="@layout/person_details">
         <argument
             android:name="actorId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_actorFragment_to_personDetailsFragment"
+            app:destination="@id/personDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/errorFragment"
         android:name="com.example.movieapp.fragments.ErrorFragment"
         android:label="ErrorFragment"
         tools:layout="@layout/error_screen"/>
+    <fragment
+        android:id="@+id/personDetailsFragment"
+        android:name="com.example.movieapp.fragments.PersonDetailsFragment"
+        android:label="Facts" />
 </navigation>

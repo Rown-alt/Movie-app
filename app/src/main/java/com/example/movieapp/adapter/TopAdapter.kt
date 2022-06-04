@@ -1,5 +1,6 @@
 package com.example.movieapp.adapter
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.example.movieapp.R
 import com.example.movieapp.fragments.MoviesFragmentDirections
 import com.example.movieapp.models.top_of_films.FilmsTop
+import com.example.movieapp.models.top_of_films.TopOfFilms
 
 class TopAdapter : RecyclerView.Adapter<TopAdapter.FilmViewHolder>() {
 
@@ -66,5 +68,9 @@ class TopAdapter : RecyclerView.Adapter<TopAdapter.FilmViewHolder>() {
         return filmList.size
     }
 
-
+    @SuppressLint("NotifyDataSetChanged")
+    fun setTop(topOfFilms : ArrayList<FilmsTop>){
+        this.filmList = topOfFilms
+        notifyDataSetChanged()
+    }
 }

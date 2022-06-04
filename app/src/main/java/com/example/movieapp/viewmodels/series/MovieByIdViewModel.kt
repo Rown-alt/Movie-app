@@ -11,20 +11,18 @@ class MovieByIdViewModel : ViewModel() {
     var series = MutableLiveData<ArrayList<MovieById>>()
     var arraySeries = ArrayList<MovieById>()
     var id = ArrayList<Int>()
-    fun addSeries(){
+    private fun addSeries(id : Int) {
         viewModelScope.launch {
-            RetrofitInstance.api.getMovie(251568).onSuccess {
+            RetrofitInstance.api.getMovie(id).onSuccess {
                 arraySeries.add(it)
             }
-            RetrofitInstance.api.getMovie(401522).onSuccess {
-                arraySeries.add(it) }
-            RetrofitInstance.api.getMovie(502838).onSuccess {
-                arraySeries.add(it) }
         }
     }
     fun getSeries(){
         viewModelScope.launch {
-            addSeries()
+            addSeries(251568)
+            addSeries(401522)
+            addSeries(502838)
             series.value = arraySeries
         }
     }

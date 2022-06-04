@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MoviesFragment"
+    tools:context=".fragments.MoviesFragment">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     >
 
     <LinearLayout
@@ -32,6 +36,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="5dp"
         android:id="@+id/moviesRV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,6 +72,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="5dp"
         android:id="@+id/seriesRV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,5 +83,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout_2"
         tools:listitem="@layout/film" />
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
 
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seriesRV">
+
+        <TextView
+            android:id="@+id/topET"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="11dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Top 10 of the day"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="5dp"
+        android:id="@+id/topRV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="4dp"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:listitem="@layout/film" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

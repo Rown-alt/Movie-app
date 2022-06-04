@@ -4,7 +4,7 @@ import com.example.movieapp.models.actorById.ActorById
 import com.example.movieapp.models.MovieById
 import com.example.movieapp.models.MovieList
 import com.example.movieapp.models.Person
-import com.example.movieapp.models.TopOfFilms
+import com.example.movieapp.models.top_of_films.TopOfFilms
 import retrofit2.http.*
 
 interface KinoPoiskAPI {
@@ -22,5 +22,5 @@ interface KinoPoiskAPI {
     suspend fun getActorById(@Path("id") actorId : Int) : Result<ActorById>
     @Headers("X-API-KEY: 9dea54ec-4608-424b-98a4-3cd3b76af31e")
     @GET("v2.2/films/top")
-    suspend fun getTop(@Query("type") type : Int, @Query("page") page : Int) : Result<TopOfFilms>
+    suspend fun getTop(@Query("type") type : String, @Query("page") page : Int) : Result<TopOfFilms>
 }

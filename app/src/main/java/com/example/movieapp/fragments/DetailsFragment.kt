@@ -42,6 +42,20 @@ class DetailsFragment : Fragment(R.layout.details_screen) {
         val description : TextView = view.findViewById(R.id.description)
         val actorsCount : TextView = view.findViewById(R.id.actorsCount)
         var ageLimit : String?
+
+        detailsFragmentViewModel.exception.observe(viewLifecycleOwner){
+            if (it!=null){
+                val bundle = Bundle()
+                bundle.putString("exceptionName", it.toString())
+                bundle.putString("fragmentName", "DetailsFragment")
+                val errorFragment = ErrorFragment()
+                errorFragment.arguments = bundle
+                activity?.supportFragmentManager?.beginTransaction()
+                    ?.replace(R.id.navHostFragment, errorFragment, "fragmentId")
+                    ?.commit()
+
+            }
+        }
         detailsFragmentViewModel.movieById.observe(viewLifecycleOwner){ movieById->
             Glide.with(view).load(movieById.logoUrl).into(logo)
             if (movieById.coverUrl == null){

@@ -32,6 +32,20 @@ class PersonFragment : Fragment(R.layout.person_details) {
         val actorName : TextView = view.findViewById(R.id.actorDetailsNameTV)
         val actorNameOriginal : TextView = view.findViewById(R.id.actorDetailsNameOriginalTV)
         val actorProfession : TextView = view.findViewById(R.id.actorsDetailsProfessionTV)
+
+        actorViewModel.exception.observe(viewLifecycleOwner){
+            if (it!=null){
+                val bundle = Bundle()
+                bundle.putString("exceptionName", it.toString())
+                bundle.putString("fragmentName", "PersonFragment")
+                val errorFragment = ErrorFragment()
+                errorFragment.arguments = bundle
+                activity?.supportFragmentManager?.beginTransaction()
+                    ?.replace(R.id.navHostFragment, errorFragment, "fragmentId")
+                    ?.commit()
+
+            }
+        }
         actorViewModel.actorById.observe(viewLifecycleOwner){   actor->
             Glide.with(view).load(actor.posterUrl).into(actorPhoto)
             actorName.text = actor.nameRu

@@ -12,12 +12,19 @@ import kotlinx.coroutines.launch
 class ActorFragmentViewModel : ViewModel() {
     var actorById = MutableLiveData<ActorById>()
     var filmsById = MutableLiveData<ArrayList<MovieById>>()
+
     private var arrayFilms = ArrayList<Films>()
     private var arrayFilmsById = ArrayList<MovieById>()
+
+    var exception = MutableLiveData<String>()
+
     fun getActorById(id : Int) {
         viewModelScope.launch {
             RetrofitInstance.api.getActorById(id).onSuccess {
                 actorById.value = it
+            }
+            RetrofitInstance.api.getActorById(id).onFailure {
+                exception.value = it.localizedMessage
             }
         }
     }
@@ -26,12 +33,17 @@ class ActorFragmentViewModel : ViewModel() {
             RetrofitInstance.api.getActorById(id).onSuccess {
                 arrayFilms = it.films
             }
+            RetrofitInstance.api.getActorById(id).onFailure {
+                exception.value = it.localizedMessage
+            }
             if (arrayFilms.size <= 5){
                 for (i in arrayFilms){
                     RetrofitInstance.api.getMovie(i.filmId).onSuccess {
                         arrayFilmsById.add(it)
                     }
-
+                    RetrofitInstance.api.getMovie(i.filmId).onFailure {
+                        exception.value = it.localizedMessage
+                    }
                 }
             }
             else{
@@ -39,7 +51,9 @@ class ActorFragmentViewModel : ViewModel() {
                     RetrofitInstance.api.getMovie(arrayFilms[i].filmId).onSuccess {
                         arrayFilmsById.add(it)
                     }
-
+                    RetrofitInstance.api.getMovie(arrayFilms[i].filmId).onFailure {
+                        exception.value = it.localizedMessage
+                    }
                 }
             }
             filmsById.value = arrayFilmsById

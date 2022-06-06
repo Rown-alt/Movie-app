@@ -10,12 +10,16 @@ import kotlinx.coroutines.launch
 class ActorsViewModel : ViewModel() {
     var actors = MutableLiveData<List<Person>>()
 
+    var exception = MutableLiveData<String>()
+
     fun getStaff(id : Int){
         viewModelScope.launch {
             RetrofitInstance.api.getStaff(id).onSuccess {
                 actors.value = it
             }
-
+            RetrofitInstance.api.getStaff(id).onFailure {
+                exception.value = it.localizedMessage
+            }
         }
     }
 }

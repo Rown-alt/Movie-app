@@ -10,19 +10,63 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     >
-
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/randomFilmLL"
         android:layout_width="match_parent"
-
         android:layout_height="40dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/premieresET"
+            android:id="@+id/randomFilmsTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="11dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Random FIlm"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/randomFilmIV"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:src="@color/light_gray"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/randomFilmLL"
+        app:riv_corner_radius="20dp" />
+    <TextView
+        android:id="@+id/randomFilmName"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:maxLines="2"
+        android:textAlignment="center"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/randomFilmIV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/randomFilmName">
+
+        <TextView
+            android:id="@+id/premieresTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
@@ -58,7 +102,7 @@
         app:layout_constraintTop_toBottomOf="@+id/moviesRV">
 
         <TextView
-            android:id="@+id/seriesET"
+            android:id="@+id/seriesTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
@@ -94,7 +138,7 @@
         app:layout_constraintTop_toBottomOf="@+id/seriesRV">
 
         <TextView
-            android:id="@+id/topET"
+            android:id="@+id/topTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"

@@ -14,7 +14,7 @@ import com.example.movieapp.R
 import com.example.movieapp.fragments.MoviesFragmentDirections
 import com.example.movieapp.models.Movie
 
-class PremieresAdapter : RecyclerView.Adapter<PremieresAdapter.MovieViewHolder>() {
+class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
     private var listMovie : ArrayList<Movie> = arrayListOf()
 

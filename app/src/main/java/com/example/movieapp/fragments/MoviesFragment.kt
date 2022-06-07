@@ -7,25 +7,26 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.R
-import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
-import com.example.movieapp.adapter.PremieresAdapter
+import com.example.movieapp.adapter.MoviesAdapter
 import com.example.movieapp.adapter.MovieByIdAdapter
 import com.example.movieapp.adapter.TopAdapter
-import com.example.movieapp.viewmodels.premieres.MoviesScreenViewModel
+import com.example.movieapp.viewmodels.moviesFragment.MoviesScreenViemModelFactory
+import com.example.movieapp.viewmodels.moviesFragment.MoviesScreenViewModel
 import com.example.movieapp.viewmodels.series.MovieByIdViewModel
-import kotlin.random.Random
+import com.example.movieapp.viewmodels.series.MovieByIdViewModelFactory
 
 class MoviesFragment : Fragment(R.layout.movies_screen){
-    private var movieAdapter = PremieresAdapter()
+    private var movieAdapter = MoviesAdapter()
     private lateinit var recyclerViewPremieres : RecyclerView
-    private val viewModelPremieres : MoviesScreenViewModel by viewModels()
-
-    private val viewModelSeries : MovieByIdViewModel by viewModels()
+    private val viewModelPremieres : MoviesScreenViewModel by activityViewModels{ MoviesScreenViemModelFactory() }
+    private val viewModelSeries : MovieByIdViewModel by activityViewModels{ MovieByIdViewModelFactory() }
     private lateinit var recyclerViewSeries : RecyclerView
     private var seriesAdapter = MovieByIdAdapter()
 
@@ -43,7 +44,9 @@ class MoviesFragment : Fragment(R.layout.movies_screen){
 
         randomFilmName = view.findViewById(R.id.randomFilmName)
         randomFilmIV = view.findViewById(R.id.randomFilmIV)
-        var randomFilmId = 100000
+
+        var randomFilmId = 7
+
         viewModelPremieres.exception.observe(viewLifecycleOwner){
             if (it!=null){
                 val bundle = Bundle()
@@ -54,7 +57,6 @@ class MoviesFragment : Fragment(R.layout.movies_screen){
                 activity?.supportFragmentManager?.beginTransaction()
                     ?.replace(R.id.navHostFragment, errorFragment, "fragmentId")
                     ?.commit()
-
             }
         }
         viewModelPremieres.movies.observe(viewLifecycleOwner){
@@ -86,12 +88,4 @@ class MoviesFragment : Fragment(R.layout.movies_screen){
         recyclerViewTop.layoutManager = StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL)
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        viewModelPremieres.getPremieres(Random.nextInt(1995, 2021),"MAY")
-        viewModelPremieres.getTop("TOP_250_BEST_FILMS")
-        viewModelSeries.getSeries()
-        viewModelPremieres.getRandomFilm()
-    }
 }

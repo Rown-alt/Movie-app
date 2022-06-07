@@ -1,7 +1,7 @@
 package com.example.movieapp.fragments
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -16,20 +16,28 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
 import com.example.movieapp.adapter.ActorsAdapter
-import com.example.movieapp.api.RetrofitInstance
+import com.example.movieapp.adapter.SimilarsAdapter
 import com.example.movieapp.viewmodels.detailsFragment.DetailsFragmentViewModel
 import com.example.movieapp.viewmodels.staff.ActorsViewModel
 
 class DetailsFragment : Fragment(R.layout.details_screen) {
     private val detailsFragmentViewModel : DetailsFragmentViewModel by viewModels()
     private val actorsViewModel : ActorsViewModel by viewModels()
-    private var actorAdapter = ActorsAdapter()
-    private val detailsArgs : DetailsFragmentArgs by navArgs()
-    private lateinit var recyclerViewActors : RecyclerView
 
+    private var actorAdapter = ActorsAdapter()
+    private var similarsAdapter = SimilarsAdapter()
+
+    private val detailsArgs : DetailsFragmentArgs by navArgs()
+
+    private lateinit var recyclerViewActors : RecyclerView
+    private lateinit var recyclerViewSimilars : RecyclerView
+
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerViewActors = view.findViewById(R.id.actorsRV)
+        recyclerViewSimilars = view.findViewById(R.id.similarFilmsRV)
+
         val cover : ImageView = view.findViewById(R.id.cover)
         val logo : ImageView = view.findViewById(R.id.logo)
         val nameOriginal : TextView = view.findViewById(R.id.nameOriginal)
@@ -48,6 +56,7 @@ class DetailsFragment : Fragment(R.layout.details_screen) {
                 val bundle = Bundle()
                 bundle.putString("exceptionName", it.toString())
                 bundle.putString("fragmentName", "DetailsFragment")
+                //bundle.putInt("FilmId", )
                 val errorFragment = ErrorFragment()
                 errorFragment.arguments = bundle
                 activity?.supportFragmentManager?.beginTransaction()
@@ -71,34 +80,41 @@ class DetailsFragment : Fragment(R.layout.details_screen) {
             else if (movieById.ratingKinopoisk < 7){
                 rating.setTextColor(Color.parseColor("#FFAFAFAF"))
             }
+
             nameOriginal.text = movieById.nameOriginal
             rating.text = movieById.ratingKinopoisk.toString()
             ageLimit = movieById.ratingAgeLimits?.filter { it.isDigit() }
-            ratingAgeLimits.text = ageLimit + "+"
+            ratingAgeLimits.text = "$ageLimit+"
             duration.text = movieById.filmLength.toString() + "мин, "
             year.text = movieById.year.toString()
             country.text = movieById.countries[0].country
             genresDetail.text = movieById.genres[0].genre
             description.text = movieById.description
             actorsCount.text
+
             (activity as AppCompatActivity).supportActionBar?.title = movieById.nameRu
+        }
+
+        detailsFragmentViewModel.similarFilms.observe(viewLifecycleOwner){
+            similarsAdapter.setSimilars(it)
         }
 
         actorsViewModel.actors.observe(viewLifecycleOwner){
             actorAdapter.setActors(it)
             actorsCount.text = it.size.toString()
         }
+
+        recyclerViewSimilars.adapter = similarsAdapter
+        recyclerViewSimilars.layoutManager = StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL)
+
         recyclerViewActors.adapter = actorAdapter
         recyclerViewActors.layoutManager = StaggeredGridLayoutManager(4,StaggeredGridLayoutManager.HORIZONTAL)
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (detailsFragmentViewModel.movieById == null) {
-            val intent = Intent(activity, DetailsFragment::class.java)
-            startActivity(intent)
-        }
         detailsFragmentViewModel.getMovieById(detailsArgs.filmId)
         actorsViewModel.getStaff(detailsArgs.filmId)
+        detailsFragmentViewModel.getSimilars(detailsArgs.filmId)
     }
 }

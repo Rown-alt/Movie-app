@@ -14,6 +14,7 @@ class ActorFragmentViewModel : ViewModel() {
     var filmsById = MutableLiveData<ArrayList<MovieById>>()
 
     private var arrayFilms = ArrayList<Films>()
+    private var shortArrayFilms = ArrayList<Films>()
     private var arrayFilmsById = ArrayList<MovieById>()
 
     var exception = MutableLiveData<String>()
@@ -36,7 +37,7 @@ class ActorFragmentViewModel : ViewModel() {
             RetrofitInstance.api.getActorById(id).onFailure {
                 exception.value = it.localizedMessage
             }
-            if (arrayFilms.size <= 5){
+            if (arrayFilms.size <= 3){
                 for (i in arrayFilms){
                     RetrofitInstance.api.getMovie(i.filmId).onSuccess {
                         arrayFilmsById.add(it)
@@ -47,7 +48,7 @@ class ActorFragmentViewModel : ViewModel() {
                 }
             }
             else{
-                for (i in 0..5){
+                for (i in 0..3){
                     RetrofitInstance.api.getMovie(arrayFilms[i].filmId).onSuccess {
                         arrayFilmsById.add(it)
                     }

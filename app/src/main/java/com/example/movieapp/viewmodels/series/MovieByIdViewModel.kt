@@ -26,15 +26,16 @@ class MovieByIdViewModel : ViewModel() {
     }
     fun getSeries(){
         viewModelScope.launch {
-            addSeries(251568)
-            addSeries(401522)
-            addSeries(502838)
-            addSeries(77044)
-            addSeries(253245)
-            addSeries(79848)
-            addSeries(178710)
+ //           addSeries(251568)
+ //           addSeries(401522)
+//            addSeries(502838)
+//            addSeries(77044)
+//            addSeries(253245)
+//            addSeries(79848)
+//            addSeries(178710)
             series.value = arraySeries
         }
+        arraySeries.clear()
     }
 
 }

@@ -28,16 +28,19 @@ class MovieByIdAdapter : RecyclerView.Adapter<MovieByIdAdapter.SeriesViewHolder>
         private val name : TextView = view.findViewById(R.id.name)
         private val genre : TextView = view.findViewById(R.id.genre)
         private val rating : TextView = view.findViewById(R.id.filmRating)
-        private val ratingRectangle : ImageView = view.findViewById(R.id.filmRatingRectangle)
+        //private val ratingRectangle : ImageView = view.findViewById(R.id.filmRatingRectangle)
         fun bind(series : MovieById){
-            ratingRectangle.setImageResource(R.drawable.rectangle_24)
+            //ratingRectangle.setImageResource(R.drawable.rectangle_24)
             rating.text = series.ratingKinopoisk.toString()
+            if (series.ratingKinopoisk == null){
+                rating.text = "-"
+            }
             if (series.ratingKinopoisk < 5)
             {
-                rating.setTextColor(Color.parseColor("#FFAD0000"))
+                rating.setBackgroundColor(Color.parseColor("#FFAD0000"))
             }
             else if (series.ratingKinopoisk< 7.0){
-                rating.setTextColor(Color.parseColor("#FFAFAFAF"))
+                rating.setBackgroundColor(Color.parseColor("#FFAFAFAF"))
             }
             genres = series.genres[0].genre
             name.text = series.nameRu
@@ -54,7 +57,7 @@ class MovieByIdAdapter : RecyclerView.Adapter<MovieByIdAdapter.SeriesViewHolder>
 
     override fun onBindViewHolder(holder: SeriesViewHolder, position: Int) {
         holder.bind(seriesList[position])
-
+        Log.e("AAA","a")
         holder.itemView.setOnClickListener{
             val action = MoviesFragmentDirections.actionMoviesFragmentToDetailsFragment(seriesList[position].kinopoiskId)
             it.findNavController().navigate(action)

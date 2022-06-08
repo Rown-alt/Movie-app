@@ -21,6 +21,7 @@ import com.example.movieapp.viewmodels.moviesFragment.MoviesScreenViemModelFacto
 import com.example.movieapp.viewmodels.moviesFragment.MoviesScreenViewModel
 import com.example.movieapp.viewmodels.series.MovieByIdViewModel
 import com.example.movieapp.viewmodels.series.MovieByIdViewModelFactory
+import kotlin.random.Random
 
 class MoviesFragment : Fragment(R.layout.movies_screen){
     private var movieAdapter = MoviesAdapter()
@@ -59,6 +60,7 @@ class MoviesFragment : Fragment(R.layout.movies_screen){
                     ?.commit()
             }
         }
+
         viewModelPremieres.movies.observe(viewLifecycleOwner){
             movieAdapter.setMovies(it)
         }
@@ -68,7 +70,7 @@ class MoviesFragment : Fragment(R.layout.movies_screen){
         viewModelSeries.series.observe(viewLifecycleOwner){
             seriesAdapter.setSeries(it)
         }
-        viewModelPremieres.randomFilm.observe(viewLifecycleOwner){
+        viewModelPremieres.randomFilm.observe(viewLifecycleOwner) {
             randomFilmName.text = it.nameRu
             Glide.with(view).load(it.posterUrl).into(randomFilmIV)
             randomFilmId = it.filmId
@@ -88,5 +90,12 @@ class MoviesFragment : Fragment(R.layout.movies_screen){
         recyclerViewTop.layoutManager = StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        viewModelSeries.getSeries()
+        viewModelPremieres.getRandomFilm()
+        viewModelPremieres.getTop("TOP_250_BEST_FILMS")
+        viewModelPremieres.getPremieres(Random.nextInt(1995, 2021),"MAY")
+    }
 
 }

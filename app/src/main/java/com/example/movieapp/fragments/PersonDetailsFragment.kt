@@ -20,10 +20,18 @@ class PersonDetailsFragment : Fragment(R.layout.facts_person) {
         val factsPerson : TextView = view.findViewById(R.id.factsPerson)
         val spousesPerson : TextView = view.findViewById(R.id.spousesPerson)
         val birthplacePerson : TextView = view.findViewById(R.id.birthplacePerson)
+        var facts : String = ""
+        var spouses : String = ""
 
         personViewModel.actorById.observe(viewLifecycleOwner){ actor->
-            factsPerson.text = actor.facts.toString()
-            spousesPerson.text = actor.spouses.toString()
+            for (i in actor.facts){
+                facts += i
+                facts += "\n"
+            }
+            factsPerson.text = facts
+//            for (i in actor.spouses){
+//            }
+//            spousesPerson.text = actor.spouses.toString()
             birthplacePerson.text = actor.birthplace
         }
     }

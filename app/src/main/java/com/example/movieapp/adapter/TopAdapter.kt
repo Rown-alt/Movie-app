@@ -27,7 +27,6 @@ class TopAdapter : RecyclerView.Adapter<TopAdapter.FilmViewHolder>() {
         private val name : TextView = view.findViewById(R.id.name)
         private val genre : TextView = view.findViewById(R.id.genre)
         private val rating : TextView = view.findViewById(R.id.filmRating)
-        //private val ratingRectangle : ImageView = view.findViewById(R.id.filmRatingRectangle)
         fun bind(films: FilmsTop){
             rating.text = films.rating
             if (films.rating == null){
@@ -67,7 +66,7 @@ class TopAdapter : RecyclerView.Adapter<TopAdapter.FilmViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return 10
+        return filmList.size
     }
 
     @SuppressLint("NotifyDataSetChanged")

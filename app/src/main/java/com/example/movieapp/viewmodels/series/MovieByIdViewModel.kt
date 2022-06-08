@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movieapp.api.RetrofitInstance
 import com.example.movieapp.models.MovieById
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MovieByIdViewModel : ViewModel() {
@@ -25,15 +26,15 @@ class MovieByIdViewModel : ViewModel() {
         }
     }
     fun getSeries(){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
  //           addSeries(251568)
  //           addSeries(401522)
 //            addSeries(502838)
 //            addSeries(77044)
 //            addSeries(253245)
 //            addSeries(79848)
-//            addSeries(178710)
-            series.value = arraySeries
+               addSeries(178710)
+            series.postValue(arraySeries)
         }
         arraySeries.clear()
     }

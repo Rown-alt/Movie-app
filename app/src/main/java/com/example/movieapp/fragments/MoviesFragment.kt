@@ -88,4 +88,5 @@ class MoviesFragment : Fragment(R.layout.movies_screen){
         recyclerViewTop.layoutManager = StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL)
     }
 
+
 }

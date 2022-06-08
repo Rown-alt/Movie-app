@@ -49,5 +49,10 @@
     <fragment
         android:id="@+id/personDetailsFragment"
         android:name="com.example.movieapp.fragments.PersonDetailsFragment"
-        android:label="Facts" />
+        tools:layout="@layout/facts_person"
+        android:label="Facts">
+        <argument
+        android:name="actorId"
+        app:argType="integer" />
+    </fragment>
 </navigation>

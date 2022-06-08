@@ -27,16 +27,18 @@ class TopAdapter : RecyclerView.Adapter<TopAdapter.FilmViewHolder>() {
         private val name : TextView = view.findViewById(R.id.name)
         private val genre : TextView = view.findViewById(R.id.genre)
         private val rating : TextView = view.findViewById(R.id.filmRating)
-        private val ratingRectangle : ImageView = view.findViewById(R.id.filmRatingRectangle)
+        //private val ratingRectangle : ImageView = view.findViewById(R.id.filmRatingRectangle)
         fun bind(films: FilmsTop){
-            ratingRectangle.setImageResource(R.drawable.rectangle_24)
             rating.text = films.rating
+            if (films.rating == null){
+                rating.text = "-"
+            }
             if (films.rating.toDouble() < 5.0)
             {
-                rating.setTextColor(Color.parseColor("#FFAD0000"))
+                rating.setBackgroundColor(Color.parseColor("#FFAD0000"))
             }
             else if (films.rating.toDouble() < 7.0){
-                rating.setTextColor(Color.parseColor("#FFAFAFAF"))
+                rating.setBackgroundColor(Color.parseColor("#FFAFAFAF"))
             }
             genres = films.genres[0].genre
             name.text = films.nameRu
@@ -65,7 +67,7 @@ class TopAdapter : RecyclerView.Adapter<TopAdapter.FilmViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return filmList.size
+        return 10
     }
 
     @SuppressLint("NotifyDataSetChanged")

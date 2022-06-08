@@ -11,7 +11,7 @@ import com.example.movieapp.R
 import com.example.movieapp.viewmodels.actorFragment.ActorFragmentViewModel
 
 class PersonDetailsFragment : Fragment(R.layout.facts_person) {
-    val actorId : PersonDetailsFragmentArgs by navArgs()
+    private val actorId : PersonDetailsFragmentArgs by navArgs()
 
     private val personViewModel : ActorFragmentViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

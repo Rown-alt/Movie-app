@@ -10,6 +10,7 @@ import com.example.movieapp.viewmodels.moviesFragment.MoviesScreenViemModelFacto
 import com.example.movieapp.viewmodels.moviesFragment.MoviesScreenViewModel
 import com.example.movieapp.viewmodels.series.MovieByIdViewModel
 import com.example.movieapp.viewmodels.series.MovieByIdViewModelFactory
+import kotlinx.coroutines.delay
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -21,12 +22,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewModelSeries.getSeries()
-
+        //viewModelSeries.getSeries()
         viewModelPremieres.getRandomFilm()
         viewModelPremieres.getTop("TOP_250_BEST_FILMS")
-        viewModelPremieres.getPremieres(Random.nextInt(1995, 2021),"MAY")
-
+        //viewModelPremieres.getPremieres(Random.nextInt(1995, 2021),"MAY")
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.navHostFragment) as NavHostFragment
         navController = navHostFragment.navController

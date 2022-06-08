@@ -39,7 +39,7 @@ class MovieByIdAdapter : RecyclerView.Adapter<MovieByIdAdapter.SeriesViewHolder>
             {
                 rating.setBackgroundColor(Color.parseColor("#FFAD0000"))
             }
-            else if (series.ratingKinopoisk< 7.0){
+            else if (series.ratingKinopoisk < 7.0){
                 rating.setBackgroundColor(Color.parseColor("#FFAFAFAF"))
             }
             genres = series.genres[0].genre

@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -30,6 +31,7 @@ class PersonFragment : Fragment(R.layout.person_details) {
         val aboutPersonBtn : Button = view.findViewById(R.id.aboutPersonBtn)
         val actorPhoto : ImageView = view.findViewById(R.id.actorDetailsIV)
         val actorName : TextView = view.findViewById(R.id.actorDetailsNameTV)
+        var actorId : Int = 0
         val actorNameOriginal : TextView = view.findViewById(R.id.actorDetailsNameOriginalTV)
         val actorProfession : TextView = view.findViewById(R.id.actorsDetailsProfessionTV)
 
@@ -51,12 +53,14 @@ class PersonFragment : Fragment(R.layout.person_details) {
             actorName.text = actor.nameRu
             actorNameOriginal.text = actor.nameEn
             actorProfession.text = actor.profession
+            actorId = actor.personId
         }
         actorViewModel.filmsById.observe(viewLifecycleOwner){ films->
             moviesAdapter.setSeries(films)
         }
         aboutPersonBtn.setOnClickListener {
-
+            val action = PersonFragmentDirections.actionActorFragmentToPersonDetailsFragment(actorId)
+            it.findNavController().navigate(action)
         }
         recyclerActorFilms.adapter = moviesAdapter
         recyclerActorFilms.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)

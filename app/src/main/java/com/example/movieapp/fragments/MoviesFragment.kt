@@ -8,7 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.R
 import androidx.navigation.findNavController
@@ -26,7 +25,7 @@ import kotlin.random.Random
 class MoviesFragment : Fragment(R.layout.movies_screen){
     private var movieAdapter = MoviesAdapter()
     private lateinit var recyclerViewPremieres : RecyclerView
-    private val viewModelPremieres : MoviesScreenViewModel by activityViewModels{ MoviesScreenViemModelFactory() }
+    private val viewModelPremieres : MoviesScreenViewModel by activityViewModels{MoviesScreenViemModelFactory()}
     private val viewModelSeries : MovieByIdViewModel by activityViewModels{ MovieByIdViewModelFactory() }
     private lateinit var recyclerViewSeries : RecyclerView
     private var seriesAdapter = MovieByIdAdapter()
@@ -36,7 +35,6 @@ class MoviesFragment : Fragment(R.layout.movies_screen){
 
     private lateinit var randomFilmIV : ImageView
     private lateinit var randomFilmName : TextView
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerViewPremieres = view.findViewById(R.id.moviesRV)
@@ -92,10 +90,21 @@ class MoviesFragment : Fragment(R.layout.movies_screen){
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        viewModelSeries.getSeries()
-        viewModelPremieres.getRandomFilm()
-        viewModelPremieres.getTop("TOP_250_BEST_FILMS")
-        viewModelPremieres.getPremieres(Random.nextInt(1995, 2021),"MAY")
-    }
+        Log.e("ABC", "requests sending")
 
+        if (viewModelSeries.series.value == null) {
+            viewModelSeries.getSeries()
+        }
+        if (viewModelPremieres.randomFilm.value == null){
+            viewModelPremieres.getRandomFilm()
+        }
+
+        if (viewModelPremieres.top.value == null){
+            viewModelPremieres.getTop("TOP_250_BEST_FILMS")
+        }
+        if (viewModelPremieres.movies.value == null){
+            viewModelPremieres.getPremieres(Random.nextInt(1995, 2021),"MAY")
+        }
+        //
+    }
 }

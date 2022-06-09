@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide
 import com.example.movieapp.R
 import com.example.movieapp.fragments.MoviesFragmentDirections
 import com.example.movieapp.models.MovieById
-import org.w3c.dom.Text
 
 class MovieByIdAdapter : RecyclerView.Adapter<MovieByIdAdapter.SeriesViewHolder>() {
 
@@ -28,19 +27,22 @@ class MovieByIdAdapter : RecyclerView.Adapter<MovieByIdAdapter.SeriesViewHolder>
         private val name : TextView = view.findViewById(R.id.name)
         private val genre : TextView = view.findViewById(R.id.genre)
         private val rating : TextView = view.findViewById(R.id.filmRating)
-        //private val ratingRectangle : ImageView = view.findViewById(R.id.filmRatingRectangle)
         fun bind(series : MovieById){
-            //ratingRectangle.setImageResource(R.drawable.rectangle_24)
             rating.text = series.ratingKinopoisk.toString()
-            if (series.ratingKinopoisk == null){
-                rating.text = "-"
-            }
-            if (series.ratingKinopoisk < 5)
-            {
-                rating.setBackgroundColor(Color.parseColor("#FFAD0000"))
-            }
-            else if (series.ratingKinopoisk < 7.0){
-                rating.setBackgroundColor(Color.parseColor("#FFAFAFAF"))
+//            if (series.ratingKinopoisk == null){
+//                rating.text = "-"
+//                rating.setBackgroundColor(Color.parseColor("#FFAFAFAF"))
+//            }
+            when {
+                series.ratingKinopoisk < 5 -> {
+                    rating.setBackgroundColor(Color.parseColor("#FFAD0000"))
+                }
+                series.ratingKinopoisk < 7.0 -> {
+                    rating.setBackgroundColor(Color.parseColor("#FFAFAFAF"))
+                }
+                else -> {
+                    rating.setBackgroundColor(Color.parseColor("#FFA52D050"))
+                }
             }
             genres = series.genres[0].genre
             name.text = series.nameRu

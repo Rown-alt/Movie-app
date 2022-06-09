@@ -26,48 +26,55 @@ class MoviesScreenViewModel : ViewModel() {
            RetrofitInstance.api.getPremieres(year,month).onSuccess {
                movies.postValue(it.items)
            }
-           RetrofitInstance.api.getPremieres(year,month).onFailure {
-               exception.postValue(it.localizedMessage)
+           RetrofitInstance.api.getPremieres(year,month).onFailure { msg->
+               exception.postValue(msg.localizedMessage)
            }
        }
     }
+
     private fun addTop(type : String, page : Int)
     {
         viewModelScope.launch(Dispatchers.IO) {
+
             RetrofitInstance.api.getTop(type, page).onSuccess {
                 Log.e("Request", "Request sent")
                 val randomPage = Random.nextInt(1, it.pagesCount)
-                RetrofitInstance.api.getTop(type, randomPage).onSuccess {
+                RetrofitInstance.api.getTop(type, randomPage).onSuccess { topOfFilms->
                     for (i in randomNum..randomNum+9){
-                        topArray.add(it.films[i])
+                        topArray.add(topOfFilms.films[i])
                     }
                 }
-                RetrofitInstance.api.getTop(type, randomPage).onFailure {
-                    exception.postValue(it.localizedMessage)
+                RetrofitInstance.api.getTop(type, randomPage).onFailure { msg->
+                    exception.postValue(msg.localizedMessage)
                 }
             }
-            RetrofitInstance.api.getTop(type, page).onFailure {
-                exception.postValue(it.localizedMessage)
+
+            RetrofitInstance.api.getTop(type, page).onFailure { msg->
+                exception.postValue(msg.localizedMessage)
             }
         }
     }
+
     fun getTop(type : String ){
         viewModelScope.launch(Dispatchers.IO) {
            addTop(type, 1)
            top.postValue(topArray)
         }
     }
-    fun getRandomFilm(){
 
-        viewModelScope.launch(Dispatchers.IO) {
+    fun getRandomFilm(){
+        viewModelScope.launch {
             val randomId = Random.nextInt(1, 20)
+
             RetrofitInstance.api.getTop("TOP_100_POPULAR_FILMS", 1).onSuccess {
                 val film = it.films[randomId]
                 randomFilm.postValue(film)
             }
-            RetrofitInstance.api.getTop("TOP_100_POPULAR_FILMS", 1).onFailure {
-                exception.postValue(it.localizedMessage)
+
+            RetrofitInstance.api.getTop("TOP_100_POPULAR_FILMS", 1).onFailure { msg->
+                exception.postValue(msg.localizedMessage)
             }
+
         }
     }
 }

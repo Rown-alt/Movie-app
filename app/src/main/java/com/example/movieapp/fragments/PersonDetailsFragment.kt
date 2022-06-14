@@ -29,9 +29,11 @@ class PersonDetailsFragment : Fragment(R.layout.facts_person) {
                 facts += "\n"
             }
             factsPerson.text = facts
-//            for (i in actor.spouses){
-//            }
-//            spousesPerson.text = actor.spouses.toString()
+            for (i in actor.spouses){
+                spouses += i
+                spouses += "\n"
+            }
+            spousesPerson.text = actor.spouses.toString()
             birthplacePerson.text = actor.birthplace
         }
     }

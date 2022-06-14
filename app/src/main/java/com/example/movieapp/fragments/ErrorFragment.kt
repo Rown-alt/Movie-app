@@ -2,6 +2,7 @@ package com.example.movieapp.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -31,6 +32,11 @@ class ErrorFragment : Fragment(R.layout.error_screen) {
 //                startActivity(intent)
 //            }
         }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        Log.e("Fragment", "ErrorFragment destroyed")
     }
 
 }

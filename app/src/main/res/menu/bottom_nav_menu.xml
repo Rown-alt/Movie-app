@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_page"
+        android:enabled="true"
+        android:icon="@drawable/house_black_silhouette_without_door"
+        android:title="Home"/>
+    <item
+        android:id="@+id/liked_page"
+        android:enabled="true"
+        android:icon="@drawable/heart__1_"
+        android:title="Liked"/>
+    <item
+        android:id="@+id/watched_page"
+        android:enabled="true"
+        android:icon="@drawable/recent"
+        android:title="Watched"/>
+</menu>

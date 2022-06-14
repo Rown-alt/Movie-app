@@ -32,12 +32,16 @@ class TopAdapter : RecyclerView.Adapter<TopAdapter.FilmViewHolder>() {
             if (films.rating == null){
                 rating.text = "-"
             }
-            if (films.rating.toDouble() < 5.0)
-            {
-                rating.setBackgroundColor(Color.parseColor("#FFAD0000"))
-            }
-            else if (films.rating.toDouble() < 7.0){
-                rating.setBackgroundColor(Color.parseColor("#FFAFAFAF"))
+            when {
+                films.rating.toDouble() < 5.0 -> {
+                    rating.setBackgroundColor(Color.parseColor("#FFAD0000"))
+                }
+                films.rating.toDouble() < 7.0 -> {
+                    rating.setBackgroundColor(Color.parseColor("#FFAFAFAF"))
+                }
+                else -> {
+                    rating.setBackgroundColor(Color.parseColor("#FF52D050"))
+                }
             }
             genres = films.genres[0].genre
             name.text = films.nameRu

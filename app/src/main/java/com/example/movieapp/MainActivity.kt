@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -16,6 +17,14 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.navHostFragment) as NavHostFragment
         navController = navHostFragment.navController
         setupActionBarWithNavController(navController)
+        val bottomNav : BottomNavigationView = findViewById(R.id.bottomNav)
+        bottomNav.setOnNavigationItemReselectedListener {
+            when(it.itemId){
+                R.id.home_page -> {
+                    true
+            }
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

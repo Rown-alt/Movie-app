@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Git projects/Movie-app/app/src/main/res/drawable/bg_splash.xml" value="0.1875" />
         <entry key="..\:/Git projects/Movie-app/app/src/main/res/font/font.xml" value="0.28020833333333334" />
-        <entry key="..\:/Git projects/Movie-app/app/src/main/res/layout/activity_main.xml" value="0.8" />
+        <entry key="..\:/Git projects/Movie-app/app/src/main/res/layout/activity_main.xml" value="0.12" />
         <entry key="..\:/Git projects/Movie-app/app/src/main/res/layout/activity_splash.xml" value="0.20512820512820512" />
         <entry key="..\:/Git projects/Movie-app/app/src/main/res/layout/actor.xml" value="0.4" />
         <entry key="..\:/Git projects/Movie-app/app/src/main/res/layout/actor_details.xml" value="0.20512820512820512" />

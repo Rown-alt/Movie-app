@@ -6,7 +6,7 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/cat_test"
+            android:src="@drawable/youtube_1"
             />
     </item>
 </layer-list>

@@ -32,4 +32,8 @@ interface KinoPoiskAPI {
     @Headers("X-API-KEY: 9dea54ec-4608-424b-98a4-3cd3b76af31e")
     @GET("v2.2/films/{id}/similars")
     suspend fun getSimilars(@Path("id") movieId : Int) : Result<SimilarsList>
+
+    @Headers("X-API-KEY: 9dea54ec-4608-424b-98a4-3cd3b76af31e")
+    @GET("/v2.2/films?order=RATING&type=ALL&ratingFrom=0&ratingTo=10&yearFrom=1000&yearTo=3000&")
+    suspend fun getSearch(@Query("keyword") keyword : String, @Query("page") page : Int) : Result<MovieList>
 }

@@ -39,6 +39,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
     //Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     var lifecycle_version = "2.4.1"
 
     // ViewModel

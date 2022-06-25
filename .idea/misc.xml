@@ -5,7 +5,7 @@
       <map>
         <entry key="..\:/Git projects/Movie-app/app/src/main/res/drawable/bg_splash.xml" value="0.1875" />
         <entry key="..\:/Git projects/Movie-app/app/src/main/res/font/font.xml" value="0.28020833333333334" />
-        <entry key="..\:/Git projects/Movie-app/app/src/main/res/layout/activity_main.xml" value="0.12" />
+        <entry key="..\:/Git projects/Movie-app/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Git projects/Movie-app/app/src/main/res/layout/activity_splash.xml" value="0.20512820512820512" />
         <entry key="..\:/Git projects/Movie-app/app/src/main/res/layout/actor.xml" value="0.4" />
         <entry key="..\:/Git projects/Movie-app/app/src/main/res/layout/actor_details.xml" value="0.20512820512820512" />
@@ -21,6 +21,8 @@
         <entry key="..\:/Git projects/Movie-app/app/src/main/res/layout/movies_screen.xml" value="0.264" />
         <entry key="..\:/Git projects/Movie-app/app/src/main/res/layout/person.xml" value="0.20512820512820512" />
         <entry key="..\:/Git projects/Movie-app/app/src/main/res/layout/person_details.xml" value="0.20512820512820512" />
+        <entry key="..\:/Git projects/Movie-app/app/src/main/res/layout/search_activity.xml" value="0.20512820512820512" />
+        <entry key="..\:/Git projects/Movie-app/app/src/main/res/layout/search_fragment.xml" value="0.20512820512820512" />
         <entry key="..\:/Git projects/Movie-app/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20512820512820512" />
       </map>
     </option>

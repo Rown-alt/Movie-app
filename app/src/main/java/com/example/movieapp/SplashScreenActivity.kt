@@ -10,11 +10,12 @@ import kotlinx.coroutines.delay
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.e("Activities", "SplashActivityLaunched")
         lifecycleScope.launchWhenCreated {
-            delay(1000)
+            delay(500)
             val intent = Intent(this@SplashScreenActivity, MainActivity::class.java)
             startActivity(intent)
             finish()

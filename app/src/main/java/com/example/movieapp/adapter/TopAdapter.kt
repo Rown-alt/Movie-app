@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
+import com.example.movieapp.databinding.FilmBinding
 import com.example.movieapp.fragments.MoviesFragmentDirections
 import com.example.movieapp.models.top_of_films.FilmsTop
 import com.example.movieapp.models.top_of_films.TopOfFilms
@@ -20,18 +21,15 @@ class TopAdapter : RecyclerView.Adapter<TopAdapter.FilmViewHolder>() {
 
     private var filmList = ArrayList<FilmsTop>()
 
-    class FilmViewHolder(view : View) : RecyclerView.ViewHolder(view) {
+    class FilmViewHolder(binding: FilmBinding) : RecyclerView.ViewHolder(binding.root) {
         private var genres : String? = null
+        private val image : ImageView = binding.picture
+        private val name : TextView = binding.name
+        private val genre : TextView = binding.genre
+        private val rating : TextView = binding.filmRating
 
-        private val image : ImageView = view.findViewById(R.id.picture)
-        private val name : TextView = view.findViewById(R.id.name)
-        private val genre : TextView = view.findViewById(R.id.genre)
-        private val rating : TextView = view.findViewById(R.id.filmRating)
         fun bind(films: FilmsTop){
             rating.text = films.rating
-            if (films.rating == null){
-                rating.text = "-"
-            }
             when {
                 films.rating.toDouble() < 5.0 -> {
                     rating.setBackgroundColor(Color.parseColor("#FFAD0000"))
@@ -54,9 +52,8 @@ class TopAdapter : RecyclerView.Adapter<TopAdapter.FilmViewHolder>() {
         parent: ViewGroup,
         viewType: Int
     ): FilmViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.film, parent, false)
-        return FilmViewHolder(view)
+        val binding = FilmBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return FilmViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: FilmViewHolder, position: Int) {
@@ -65,7 +62,6 @@ class TopAdapter : RecyclerView.Adapter<TopAdapter.FilmViewHolder>() {
         holder.itemView.setOnClickListener{
             val action = MoviesFragmentDirections.actionMoviesFragmentToDetailsFragment(filmList[position].filmId)
             it.findNavController().navigate(action)
-            Log.e("Usage of data", "Data sent")
         }
     }
 

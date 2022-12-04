@@ -11,20 +11,18 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
+import com.example.movieapp.databinding.FilmBinding
 import com.example.movieapp.fragments.MoviesFragmentDirections
 import com.example.movieapp.models.Movie
 
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
-
     private var listMovie : ArrayList<Movie> = arrayListOf()
 
-    class MovieViewHolder(view : View) : RecyclerView.ViewHolder(view){
-
+    class MovieViewHolder(view: FilmBinding) : RecyclerView.ViewHolder(view.root){
         private var genres : String? = null
-
-        private val image : ImageView = view.findViewById(R.id.picture)
-        private val name : TextView = view.findViewById(R.id.name)
-        private val genre : TextView = view.findViewById(R.id.genre)
+        private val image : ImageView = view.picture
+        private val name : TextView = view.name
+        private val genre : TextView = view.genre
         fun bind (movie : Movie){
             genres = movie.genres[0].genre
             name.text = movie.nameRu
@@ -34,8 +32,7 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.film,parent, false)
+        val view = FilmBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MovieViewHolder(view)
     }
 

@@ -52,18 +52,17 @@ class DetailsFragment : Fragment(R.layout.details_screen) {
         var ageLimit : String?
 
         detailsFragmentViewModel.exception.observe(viewLifecycleOwner){
-            if (it!=null){
-                val bundle = Bundle()
-                bundle.putString("exceptionName", it.toString())
-                bundle.putString("fragmentName", "DetailsFragment")
-                //bundle.putInt("FilmId", )
-                val errorFragment = ErrorFragment()
-                errorFragment.arguments = bundle
-                activity?.supportFragmentManager?.beginTransaction()
-                    ?.replace(R.id.navHostFragment, errorFragment, "fragmentId")
-                    ?.commit()
-
-            }
+//            if (it!=null){
+//                val bundle = Bundle()
+//                bundle.putString("exceptionName", it.toString())
+//                bundle.putString("fragmentName", "DetailsFragment")
+//                //bundle.putInt("FilmId", )
+//                val errorFragment = ErrorFragment()
+//                errorFragment.arguments = bundle
+//                activity?.supportFragmentManager?.beginTransaction()
+//                    ?.replace(R.id.navHostFragment, errorFragment, "fragmentId")
+//                    ?.commit()
+//            }
         }
         detailsFragmentViewModel.movieById.observe(viewLifecycleOwner){ movieById->
             Glide.with(view).load(movieById.logoUrl).into(logo)

@@ -20,7 +20,6 @@ class MovieByIdAdapter : RecyclerView.Adapter<MovieByIdAdapter.SeriesViewHolder>
     private var seriesList = ArrayList<MovieById>()
 
     class SeriesViewHolder(view : View) : RecyclerView.ViewHolder(view) {
-
         private var genres : String? = null
 
         private val image : ImageView = view.findViewById(R.id.picture)
@@ -29,10 +28,6 @@ class MovieByIdAdapter : RecyclerView.Adapter<MovieByIdAdapter.SeriesViewHolder>
         private val rating : TextView = view.findViewById(R.id.filmRating)
         fun bind(series : MovieById){
             rating.text = series.ratingKinopoisk.toString()
-//            if (series.ratingKinopoisk == null){
-//                rating.text = "-"
-//                rating.setBackgroundColor(Color.parseColor("#FFAFAFAF"))
-//            }
             when {
                 series.ratingKinopoisk < 5 -> {
                     rating.setBackgroundColor(Color.parseColor("#FFAD0000"))

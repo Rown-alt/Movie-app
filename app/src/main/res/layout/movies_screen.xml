@@ -5,162 +5,140 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".fragments.MoviesFragment">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
-    <LinearLayout
-        android:id="@+id/randomFilmLL"
+    tools:context=".fragments.MoviesFragment"
+    android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/randomFilmsTV"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="11dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_bold"
-            android:text="Random FIlm"
-            android:textSize="17dp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/randomFilmIV"
-        android:layout_width="150dp"
-        android:layout_height="200dp"
-        android:src="@color/light_gray"
-        android:scaleType="centerCrop"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/randomFilmLL"
-        app:riv_corner_radius="20dp" />
-    <TextView
-        android:id="@+id/randomFilmName"
-        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:maxLines="2"
-        android:textAlignment="center"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/randomFilmIV"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="4dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/randomFilmName">
+        >
+            <TextView
+                android:id="@+id/randomFilmsTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginTop="11dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Random FIlm"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/randomFilmIV"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:src="@color/light_gray"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/randomFilmsTitle"
+            app:riv_corner_radius="20dp" />
 
         <TextView
-            android:id="@+id/premieresTV"
+            android:id="@+id/randomFilmName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:maxLines="2"
+            android:textAlignment="center"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/randomFilmIV"
+            app:layout_constraintStart_toStartOf="@id/randomFilmIV"
+            app:layout_constraintEnd_toEndOf="@id/randomFilmIV"/>
+
+        <TextView
+            android:id="@+id/premieresTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
             android:layout_marginTop="11dp"
             android:layout_weight="1"
             android:fontFamily="@font/poppins_bold"
             android:text="Premieres"
-            android:textSize="17dp"
-            android:textStyle="bold" />
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/randomFilmName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="5dp"
-        android:id="@+id/moviesRV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="4dp"
-        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:listitem="@layout/film" />
-    <LinearLayout
-        android:id="@+id/linearLayout_2"
-        android:layout_width="match_parent"
-
-        android:layout_height="40dp"
-        android:layout_marginTop="4dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/moviesRV">
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="5dp"
+            android:id="@+id/moviesRV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="4dp"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/premieresTitle"
+            tools:listitem="@layout/film" />
 
         <TextView
-            android:id="@+id/seriesTV"
+            android:id="@+id/seriesTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
             android:layout_marginTop="11dp"
             android:layout_weight="1"
             android:fontFamily="@font/poppins_bold"
-            android:text="Recomended series"
-            android:textSize="17dp"
-            android:textStyle="bold" />
+            android:text="Recommended series"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/moviesRV"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="5dp"
-        android:id="@+id/seriesRV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:paddingLeft="4dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout_2"
-        tools:listitem="@layout/film" />
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-
-        android:layout_height="40dp"
-        android:layout_marginTop="4dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seriesRV">
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="5dp"
+            android:id="@+id/seriesRV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingLeft="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seriesTitle"
+            tools:listitem="@layout/film" />
 
         <TextView
-            android:id="@+id/topTV"
+            android:id="@+id/topTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
             android:layout_marginTop="11dp"
             android:layout_weight="1"
             android:fontFamily="@font/poppins_bold"
-            android:text="Top 10 of the day"
-            android:textSize="17dp"
-            android:textStyle="bold" />
+            android:text="@string/top_10_of_the_day"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/seriesRV"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-    </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="5dp"
-        android:id="@+id/topRV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="4dp"
-        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        tools:listitem="@layout/film" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="5dp"
+            android:id="@+id/topRV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="4dp"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topTitle"
+            tools:listitem="@layout/film" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

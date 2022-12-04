@@ -6,11 +6,11 @@
         android:icon="@drawable/house_black_silhouette_without_door"
         android:title="Home"
         />
-    <item
-        android:id="@+id/liked_page"
-        android:enabled="true"
-        android:icon="@drawable/heart__1_"
-        android:title="Liked"/>
+<!--    <item-->
+<!--        android:id="@+id/liked_page"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/heart__1_"-->
+<!--        android:title="Liked"/>-->
     <item
         android:id="@+id/search_page"
         android:enabled="true"

@@ -11,21 +11,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
-            <TextView
-                android:id="@+id/randomFilmsTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginEnd="14dp"
-                android:layout_marginTop="11dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Random FIlm"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/randomFilmsTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginTop="11dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Random FIlm"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/randomFilmIV"
@@ -70,10 +70,10 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="5dp"
             android:id="@+id/moviesRV"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal"
             android:paddingStart="4dp"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
@@ -81,6 +81,30 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/premieresTitle"
             tools:listitem="@layout/film" />
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/moviesRVShimmer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:paddingStart="4dp"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/premieresTitle">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <include layout="@layout/film_shimmer"/>
+                <include layout="@layout/film_shimmer"/>
+                <include layout="@layout/film_shimmer"/>
+                <include layout="@layout/film_shimmer"/>
+                <include layout="@layout/film_shimmer"/>
+                <include layout="@layout/film_shimmer"/>
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
         <TextView
             android:id="@+id/seriesTitle"
@@ -99,10 +123,10 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="5dp"
             android:id="@+id/seriesRV"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
@@ -110,6 +134,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seriesTitle"
             tools:listitem="@layout/film" />
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/seriesRVShimmer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:paddingStart="4dp"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seriesTitle">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <include layout="@layout/film_shimmer"/>
+                <include layout="@layout/film_shimmer"/>
+                <include layout="@layout/film_shimmer"/>
+                <include layout="@layout/film_shimmer"/>
+                <include layout="@layout/film_shimmer"/>
+                <include layout="@layout/film_shimmer"/>
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
         <TextView
             android:id="@+id/topTitle"
@@ -120,7 +167,7 @@
             android:layout_marginTop="11dp"
             android:layout_weight="1"
             android:fontFamily="@font/poppins_bold"
-            android:text="@string/top_10_of_the_day"
+            android:text="Top 20 of the day"
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/seriesRV"
@@ -128,17 +175,43 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="5dp"
             android:id="@+id/topRV"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal"
             android:paddingStart="4dp"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/topTitle"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/film" />
 
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/topRVShimmer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:paddingStart="4dp"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topTitle"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <include layout="@layout/film_shimmer"/>
+                <include layout="@layout/film_shimmer"/>
+                <include layout="@layout/film_shimmer"/>
+                <include layout="@layout/film_shimmer"/>
+                <include layout="@layout/film_shimmer"/>
+                <include layout="@layout/film_shimmer"/>
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

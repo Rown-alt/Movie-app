@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="110dp"
+    android:layout_height="200dp"
+    android:layout_marginTop="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@android:color/transparent">
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/picture"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        app:riv_corner_radius="16dp"
+        android:scaleType="centerCrop"
+        android:src="@color/light_gray"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/filmRating"
+        android:layout_width="35dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="9dp"
+        android:fontFamily="@font/roboto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/picture" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/name"
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:src="@color/light_gray"
+        app:layout_constraintTop_toBottomOf="@id/picture"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/genre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:textColor="#B4B4B4"
+        android:textSize="8sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

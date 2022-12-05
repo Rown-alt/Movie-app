@@ -45,7 +45,6 @@ class ResultCall<T>(val delegate : Call<T>) : Call<Result<T>> {
 
                 override fun onFailure(call: Call<T>, t: Throwable) {
                     val errorMessage = when(t){
-                        is IOException -> "No internet connection"
                         is HttpException -> "Something wrong"
                         else -> t.localizedMessage
                     }

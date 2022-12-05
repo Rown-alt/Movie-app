@@ -16,13 +16,11 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
 import com.example.movieapp.adapter.MovieByIdAdapter
-import com.example.movieapp.viewmodels.actorFragment.ActorFragmentViewModel
 
 class PersonFragment : Fragment(R.layout.person_details) {
 
     private lateinit var recyclerActorFilms : RecyclerView
     private var moviesAdapter = MovieByIdAdapter()
-    private val actorViewModel : ActorFragmentViewModel by viewModels()
     private val actorArgs : PersonFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,29 +33,29 @@ class PersonFragment : Fragment(R.layout.person_details) {
         val actorNameOriginal : TextView = view.findViewById(R.id.actorDetailsNameOriginalTV)
         val actorProfession : TextView = view.findViewById(R.id.actorsDetailsProfessionTV)
 
-        actorViewModel.exception.observe(viewLifecycleOwner){
-            if (it!=null){
-                val bundle = Bundle()
-                bundle.putString("exceptionName", it.toString())
-                bundle.putString("fragmentName", "PersonFragment")
-                val errorFragment = ErrorFragment()
-                errorFragment.arguments = bundle
-                activity?.supportFragmentManager?.beginTransaction()
-                    ?.replace(R.id.navHostFragment, errorFragment, "fragmentId")
-                    ?.commit()
-
-            }
-        }
-        actorViewModel.actorById.observe(viewLifecycleOwner){   actor->
-            Glide.with(view).load(actor.posterUrl).into(actorPhoto)
-            actorName.text = actor.nameRu
-            actorNameOriginal.text = actor.nameEn
-            actorProfession.text = actor.profession
-            actorId = actor.personId
-        }
-        actorViewModel.filmsById.observe(viewLifecycleOwner){ films->
-            moviesAdapter.setSeries(films)
-        }
+//        actorViewModel.exception.observe(viewLifecycleOwner){
+//            if (it!=null){
+//                val bundle = Bundle()
+//                bundle.putString("exceptionName", it.toString())
+//                bundle.putString("fragmentName", "PersonFragment")
+//                val errorFragment = ErrorFragment()
+//                errorFragment.arguments = bundle
+//                activity?.supportFragmentManager?.beginTransaction()
+//                    ?.replace(R.id.navHostFragment, errorFragment, "fragmentId")
+//                    ?.commit()
+//
+//            }
+//        }
+//        actorViewModel.actorById.observe(viewLifecycleOwner){   actor->
+//            Glide.with(view).load(actor.posterUrl).into(actorPhoto)
+//            actorName.text = actor.nameRu
+//            actorNameOriginal.text = actor.nameEn
+//            actorProfession.text = actor.profession
+//            actorId = actor.personId
+//        }
+//        actorViewModel.filmsById.observe(viewLifecycleOwner){ films->
+//            moviesAdapter.setSeries(films)
+//        }
         aboutPersonBtn.setOnClickListener {
             val action = PersonFragmentDirections.actionActorFragmentToPersonDetailsFragment(actorId)
             it.findNavController().navigate(action)
@@ -69,7 +67,7 @@ class PersonFragment : Fragment(R.layout.person_details) {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        actorViewModel.getActorById(actorArgs.actorId)
-        actorViewModel.getMovies(actorArgs.actorId)
+//        actorViewModel.getActorById(actorArgs.actorId)
+//        actorViewModel.getMovies(actorArgs.actorId)
     }
 }

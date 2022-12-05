@@ -5,6 +5,7 @@ import com.example.movieapp.models.MovieById
 import com.example.movieapp.models.MovieList
 import com.example.movieapp.models.Person
 import com.example.movieapp.models.actorById.ActorById
+import com.example.movieapp.models.films_by_keyword.FilmsByKeyword
 import com.example.movieapp.models.similars.SimilarsList
 import com.example.movieapp.models.top_of_films.TopOfFilms
 import retrofit2.http.Path
@@ -23,5 +24,5 @@ interface Repository {
 
     suspend fun getSimilars(@Path("id") movieId : Int) : Result<SimilarsList>
 
-    suspend fun getSearch(@Query("keyword") keyword : String, @Query("page") page : Int) : Result<MovieList>
+    suspend fun getSearch(@Query("keyword") keyword : String, @Query("page") page : Int) : Result<FilmsByKeyword>
 }

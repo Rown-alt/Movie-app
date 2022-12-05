@@ -25,14 +25,14 @@ class MoviesFragment : Fragment(R.layout.movies_screen){
     private var seriesAdapter = MovieByIdAdapter()
     private var topAdapter = TopAdapter()
     private val moviesViewModel : MoviesScreenViewModel by viewModel()
-
+    private var randomFilmId : Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        moviesViewModel.getSeries()
-//        val page = Random.nextInt(1, 8)
-//        moviesViewModel.getTop("TOP_250_BEST_FILMS", page)
-//        moviesViewModel.getPremieres(Random.nextInt(1995, 2021),"MAY")
-//        moviesViewModel.getRandomFilm()
+        moviesViewModel.getSeries()
+        val page = Random.nextInt(1, 8)
+        moviesViewModel.getTop("TOP_250_BEST_FILMS", page)
+        moviesViewModel.getPremieres(Random.nextInt(1995, 2021),"MAY")
+        moviesViewModel.getRandomFilm()
     }
 
     override fun onCreateView(
@@ -41,10 +41,41 @@ class MoviesFragment : Fragment(R.layout.movies_screen){
         savedInstanceState: Bundle?
     ): View {
         _binding = MoviesScreenBinding.inflate(inflater, container, false)
+        launchShimmers()
+        observeViewModel()
+
+        binding.randomFilmIV.setOnClickListener {
+            val action = MoviesFragmentDirections.actionMoviesFragmentToDetailsFragment(randomFilmId)
+            it.findNavController().navigate(action)
+        }
+        setupRecyclerViews()
+        return binding.root
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
+    private fun launchShimmers(){
+        binding.randomFilmShimmer.startShimmer()
         binding.topRVShimmer.startShimmer()
         binding.moviesRVShimmer.startShimmer()
         binding.seriesRVShimmer.startShimmer()
-        var randomFilmId = 7
+    }
+
+    private fun setupRecyclerViews(){
+        binding.moviesRV.adapter = movieAdapter
+        binding.moviesRV.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
+
+        binding.seriesRV.adapter = seriesAdapter
+        binding.seriesRV.layoutManager = StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL)
+
+        binding.topRV.adapter = topAdapter
+        binding.topRV.layoutManager = StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL)
+    }
+
+    private fun observeViewModel(){
         moviesViewModel.exception.observe(viewLifecycleOwner){
             if (it!=null){
                 val bundle = Bundle()
@@ -76,27 +107,7 @@ class MoviesFragment : Fragment(R.layout.movies_screen){
             binding.randomFilmName.text = it.nameRu
             Glide.with(requireView()).load(it.posterUrl).into(binding.randomFilmIV)
             randomFilmId = it.filmId
+            binding.randomFilmShimmer.stopShimmer()
         }
-
-        binding.randomFilmIV.setOnClickListener {
-            val action = MoviesFragmentDirections.actionMoviesFragmentToDetailsFragment(randomFilmId)
-            it.findNavController().navigate(action)
-            Log.e("AAA", "Data sent")
-        }
-
-        binding.moviesRV.adapter = movieAdapter
-        binding.moviesRV.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
-
-        binding.seriesRV.adapter = seriesAdapter
-        binding.seriesRV.layoutManager = StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL)
-
-        binding.topRV.adapter = topAdapter
-        binding.topRV.layoutManager = StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL)
-        return binding.root
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }

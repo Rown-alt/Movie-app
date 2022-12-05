@@ -4,6 +4,7 @@ import com.example.movieapp.models.actorById.ActorById
 import com.example.movieapp.models.MovieById
 import com.example.movieapp.models.MovieList
 import com.example.movieapp.models.Person
+import com.example.movieapp.models.films_by_keyword.FilmsByKeyword
 import com.example.movieapp.models.similars.SimilarsList
 import com.example.movieapp.models.top_of_films.TopOfFilms
 import retrofit2.http.*
@@ -34,6 +35,6 @@ interface KinoPoiskAPI {
     suspend fun getSimilars(@Path("id") movieId : Int) : Result<SimilarsList>
 
     @Headers(header)
-    @GET("/v2.2/films?order=RATING&type=ALL&ratingFrom=0&ratingTo=10&yearFrom=1000&yearTo=3000&")
-    suspend fun getSearch(@Query("keyword") keyword : String, @Query("page") page : Int) : Result<MovieList>
+    @GET("v2.1/films/search-by-keyword")
+    suspend fun getSearch(@Query("keyword") keyword : String, @Query("page") page : Int) : Result<FilmsByKeyword>
 }

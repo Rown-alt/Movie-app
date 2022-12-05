@@ -4,7 +4,6 @@ package com.example.movieapp.viewmodels.moviesFragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.movieapp.api.RetrofitInstance
 import com.example.movieapp.models.Movie
 import com.example.movieapp.models.MovieById
 import com.example.movieapp.models.top_of_films.FilmsTop
@@ -71,7 +70,7 @@ class MoviesScreenViewModel(private val repository: Repository) : ViewModel() {
     private fun addSeries(id : Int) {
         viewModelScope.launch {
             try {
-                val request = RetrofitInstance.api.getMovie(id)
+                val request = repository.getMovie(id)
                 request.onSuccess {
                     arraySeries.add(it)
                 }

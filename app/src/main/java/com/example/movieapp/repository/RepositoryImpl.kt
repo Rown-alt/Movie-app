@@ -5,6 +5,7 @@ import com.example.movieapp.models.MovieById
 import com.example.movieapp.models.MovieList
 import com.example.movieapp.models.Person
 import com.example.movieapp.models.actorById.ActorById
+import com.example.movieapp.models.films_by_keyword.FilmsByKeyword
 import com.example.movieapp.models.similars.SimilarsList
 import com.example.movieapp.models.top_of_films.TopOfFilms
 
@@ -33,7 +34,7 @@ class RepositoryImpl(private val api: KinoPoiskAPI): Repository {
         return api.getSimilars(movieId)
     }
 
-    override suspend fun getSearch(keyword: String, page: Int): Result<MovieList> {
+    override suspend fun getSearch(keyword: String, page: Int): Result<FilmsByKeyword> {
         return api.getSearch(keyword, page)
     }
 }

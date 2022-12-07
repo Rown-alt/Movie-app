@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 
 data class Movie (
-    @SerializedName("kinopoiskId"      ) var kinopoiskId      : Int                        ,
+    @SerializedName("kinopoiskId"      ) var kinopoiskId      : Int?                 = null,
     @SerializedName("nameRu"           ) var nameRu           : String?              = null,
     @SerializedName("nameEn"           ) var nameEn           : String?              = null,
     @SerializedName("year"             ) var year             : Int?                 = null,

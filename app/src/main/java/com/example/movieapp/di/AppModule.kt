@@ -4,6 +4,7 @@ import com.example.movieapp.api.KinoPoiskAPI
 import com.example.movieapp.api.ResultCallAdapterFactory
 import com.example.movieapp.repository.Repository
 import com.example.movieapp.repository.RepositoryImpl
+import com.example.movieapp.viewmodels.ActorViewModel
 import com.example.movieapp.viewmodels.detailsFragment.DetailsFragmentViewModel
 import com.example.movieapp.viewmodels.moviesFragment.MoviesScreenViewModel
 import com.example.movieapp.viewmodels.searchFragment.SearchViewModel
@@ -41,5 +42,9 @@ val appModule = module{
 
     viewModel{
         SearchViewModel(get())
+    }
+
+    viewModel{
+        ActorViewModel(get())
     }
 }

@@ -65,9 +65,9 @@ abstract class PersonAbstractFragment: Fragment() {
             binding.birthplacePerson.text = actor.birthplace
         }
 
-        binding.aboutPersonBtn.setOnClickListener {
-            it.findNavController().navigate(_action)
-        }
+//        binding.aboutPersonBtn.setOnClickListener {
+//            it.findNavController().navigate(_action)
+//        }
 
         binding.actorFilms.adapter = moviesAdapter
         binding.actorFilms.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)

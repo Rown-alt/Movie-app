@@ -16,7 +16,6 @@ import com.example.movieapp.fragments.MoviesFragmentDirections
 import com.example.movieapp.models.MovieById
 
 class MovieByIdAdapter : RecyclerView.Adapter<MovieByIdAdapter.SeriesViewHolder>() {
-
     private var seriesList = ArrayList<MovieById>()
 
     class SeriesViewHolder(view : View) : RecyclerView.ViewHolder(view) {

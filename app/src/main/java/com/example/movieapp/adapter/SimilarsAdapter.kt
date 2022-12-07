@@ -17,7 +17,6 @@ import com.example.movieapp.fragments.MoviesFragmentDirections
 import com.example.movieapp.models.similars.Similar
 
 class SimilarsAdapter : RecyclerView.Adapter<SimilarsAdapter.SimilarViewHolder>() {
-
     private var listSimilars : ArrayList<Similar> = arrayListOf()
 
     class SimilarViewHolder(view : View) : RecyclerView.ViewHolder(view){

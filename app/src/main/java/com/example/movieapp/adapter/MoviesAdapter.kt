@@ -40,9 +40,8 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
         holder.bind(listMovie[position])
 
         holder.itemView.setOnClickListener{
-            val action = MoviesFragmentDirections.actionMoviesFragmentToDetailsFragment(listMovie[position].kinopoiskId)
+            val action = MoviesFragmentDirections.actionMoviesFragmentToDetailsFragment(listMovie[position].kinopoiskId!!)
             it.findNavController().navigate(action)
-            Log.e("AAA", "Data sent to DetailsFragment")
         }
     }
 

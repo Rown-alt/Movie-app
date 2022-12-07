@@ -12,10 +12,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
 import com.example.movieapp.fragments.DetailsFragmentDirections
+import com.example.movieapp.fragments.FilmByKeywordDetails
+import com.example.movieapp.fragments.FilmByKeywordDetailsDirections
 import com.example.movieapp.models.Person
 
 class ActorsAdapter : RecyclerView.Adapter<ActorsAdapter.ActorViewHolder>() {
     var staff : List<Person> = listOf()
+    var filmType = ""
     class ActorViewHolder(view : View) : RecyclerView.ViewHolder(view){
         private val actorName : TextView = view.findViewById(R.id.actorName)
         private val actorRole : TextView = view.findViewById(R.id.actorRole)
@@ -37,10 +40,30 @@ class ActorsAdapter : RecyclerView.Adapter<ActorsAdapter.ActorViewHolder>() {
     override fun onBindViewHolder(holder: ActorViewHolder, position: Int) {
         holder.bind(staff[position])
 
-        holder.itemView.setOnClickListener{
-            val action = DetailsFragmentDirections.actionDetailsFragmentToActorFragment(staff[position].staffId)
-            it.findNavController().navigate(action)
-            Log.e("AAA", "Data sent to ActorFragment")
+        when(getItemViewType(position)){
+            0 -> {
+                holder.itemView.setOnClickListener{
+                    val action = DetailsFragmentDirections.actionDetailsFragmentToActorFragment(staff[position].staffId)
+                    it.findNavController().navigate(action)
+                }
+            }
+            1 -> {
+                holder.itemView.setOnClickListener{
+                    val action = FilmByKeywordDetailsDirections.actionFilmByKeyWordDetailsToPersonByKeywordDetails(staff[position].staffId)
+                    it.findNavController().navigate(action)
+                }
+            }
+
+        }
+
+
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (filmType=="FilmByKeyword"){
+            1
+        } else{
+            0
         }
     }
 

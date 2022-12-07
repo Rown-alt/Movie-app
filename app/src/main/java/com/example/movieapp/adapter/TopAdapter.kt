@@ -17,8 +17,7 @@ import com.example.movieapp.fragments.MoviesFragmentDirections
 import com.example.movieapp.models.top_of_films.FilmsTop
 import com.example.movieapp.models.top_of_films.TopOfFilms
 
-class TopAdapter : RecyclerView.Adapter<TopAdapter.FilmViewHolder>() {
-
+class TopAdapter :RecyclerView.Adapter<TopAdapter.FilmViewHolder>() {
     private var filmList = ArrayList<FilmsTop>()
 
     class FilmViewHolder(binding: FilmBinding) : RecyclerView.ViewHolder(binding.root) {

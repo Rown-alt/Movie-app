@@ -14,7 +14,7 @@ class DetailsFragmentViewModel(private val repository: Repository) : ViewModel()
     var similarFilms = MutableLiveData<ArrayList<Similar>>()
     var exception = MutableLiveData<String>()
 
-    fun getMovieById(id : Int) {
+    fun getMovieById(id: Int) {
         viewModelScope.launch {
             try{
                 val request = repository.getMovie(id)

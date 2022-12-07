@@ -17,8 +17,7 @@
         android:id="@+id/detailsFragment"
         android:name="com.example.movieapp.fragments.DetailsFragment"
         android:label="DetailsFragment"
-        tools:layout="@layout/details_screen"
-        >
+        tools:layout="@layout/details_screen">
         <argument
             android:name="filmId"
             app:argType="integer" />
@@ -37,18 +36,6 @@
         <argument
             android:name="actorId"
             app:argType="integer" />
-        <action
-            android:id="@+id/action_actorFragment_to_personDetailsFragment"
-            app:destination="@id/personDetailsFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/personDetailsFragment"
-        android:name="com.example.movieapp.fragments.PersonDetailsFragment"
-        tools:layout="@layout/facts_person"
-        android:label="Facts">
-        <argument
-        android:name="actorId"
-        app:argType="integer" />
-    </fragment>
 </navigation>

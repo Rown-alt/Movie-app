@@ -8,5 +8,29 @@
         android:id="@+id/searchFragment"
         android:name="com.example.movieapp.fragments.SearchFragment"
         android:label="Поиск"
-        tools:layout="@layout/search_fragment" />
+        tools:layout="@layout/search_fragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_filmByKeyWordDetails"
+            app:destination="@id/filmByKeyWordDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/filmByKeyWordDetails"
+        android:name="com.example.movieapp.fragments.FilmByKeywordDetails"
+        android:label="film_by_keyword"
+        tools:layout="@layout/details_screen" >
+        <argument
+            android:name="film_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_filmByKeyWordDetails_to_personByKeywordDetails"
+            app:destination="@id/personByKeywordDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/personByKeywordDetails"
+        android:name="com.example.movieapp.fragments.PersonByKeywordFragment"
+        android:label="PersonByKeywordDetails" >
+        <argument
+            android:name="user_id"
+            app:argType="integer" />
+    </fragment>
 </navigation>

@@ -3,4 +3,5 @@
     <string name="actors">Актеры</string>
     <string name="similar_films">Похожее</string>
     <string name="top_10_of_the_day">Top 10 of the day</string>
+    <string name="insert_film_name">Введите название фильма</string>
 </resources>

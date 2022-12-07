@@ -17,7 +17,7 @@
 
     <TextView
         android:id="@+id/actorDetailsNameTV"
-        android:layout_width="180dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:fontFamily="@font/poppins"
@@ -26,44 +26,60 @@
         android:text="Уильям Х. Мэйси"
         android:textSize="34sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/actorDetailsIV"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/actorDetailsNameOriginalTV"
-        android:layout_width="180dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:fontFamily="@font/roboto_light"
         android:paddingStart="4dp"
         android:text="William H. Mancy"
         android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/actorDetailsIV"
         app:layout_constraintTop_toBottomOf="@+id/actorDetailsNameTV" />
 
     <TextView
         android:id="@+id/actorsDetailsProfessionTV"
-        android:layout_width="180dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:maxLines="2"
         android:padding="4dp"
         android:text="Актер, Сценарист, Режиссер"
         android:textColor="#B4B4B4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/actorDetailsIV"
         app:layout_constraintTop_toBottomOf="@id/actorDetailsNameOriginalTV" />
 
+    <TextView
+        android:id="@+id/birthplacePerson"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:maxLines="2"
+        android:padding="4dp"
+        android:textColor="#B4B4B4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/actorDetailsIV"
+        app:layout_constraintTop_toBottomOf="@id/actorsDetailsProfessionTV" />
+
     <Button
         android:id="@+id/aboutPersonBtn"
-        android:layout_width="180dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="1dp"
         android:fontFamily="@font/ubuntu_medium"
         android:text="Подробнее"
         android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/actorDetailsIV"
-        app:layout_constraintTop_toBottomOf="@+id/guideline2" />
+        app:layout_constraintBottom_toBottomOf="@id/actorDetailsIV"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/actorFilms"
@@ -81,7 +97,7 @@
         android:id="@+id/actorFilmsTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Films"
         android:paddingLeft="4dp"
@@ -89,19 +105,19 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/actorDetailsIV" />
+    <TextView
+        android:id="@+id/spousesTitle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="206dp" />
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Spouses"
+        android:paddingLeft="4dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/actorFilms" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="272dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

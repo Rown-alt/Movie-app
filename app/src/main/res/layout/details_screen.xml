@@ -32,15 +32,14 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginEnd="80dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="@+id/cover"
+            android:layout_marginBottom="20dp"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toTopOf="@id/rating"
+            tools:layout_editor_absoluteY="400dp" />
 
         <TextView
             android:id="@+id/nameOriginal"

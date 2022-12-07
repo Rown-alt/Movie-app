@@ -18,14 +18,14 @@ import com.example.movieapp.models.MovieById
 import com.example.movieapp.viewmodels.detailsFragment.DetailsFragmentViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DetailsFragment : Fragment() {
+class FilmByKeywordDetails: Fragment() {
     private var _binding : DetailsScreenBinding? = null
     private val binding get() = _binding!!
     private val detailsFragmentViewModel : DetailsFragmentViewModel by viewModel()
 
     private var actorAdapter = ActorsAdapter()
     private var similarsAdapter = SimilarsAdapter()
-    private val detailsArgs : DetailsFragmentArgs by navArgs()
+    private val detailsArgs : FilmByKeywordDetailsArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +40,7 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = DetailsScreenBinding.inflate(inflater, container, false)
+        actorAdapter.filmType = "FilmByKeyword"
         detailsFragmentViewModel.exception.observe(viewLifecycleOwner){
             if (it!=null){
                 val bundle = Bundle()
@@ -67,10 +68,11 @@ class DetailsFragment : Fragment() {
         }
 
         binding.similarFilmsRV.adapter = similarsAdapter
-        binding.similarFilmsRV.layoutManager = StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL)
+        binding.similarFilmsRV.layoutManager = StaggeredGridLayoutManager(1,
+            StaggeredGridLayoutManager.HORIZONTAL)
 
         binding.actorsRV.adapter = actorAdapter
-        binding.actorsRV.layoutManager = StaggeredGridLayoutManager(4,StaggeredGridLayoutManager.HORIZONTAL)
+        binding.actorsRV.layoutManager = StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.HORIZONTAL)
         return binding.root
     }
 

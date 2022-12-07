@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.movieapp.adapter.FilmsByKeywordAdapter
-import com.example.movieapp.adapter.MoviesAdapter
 import com.example.movieapp.databinding.SearchFragmentBinding
 import com.example.movieapp.viewmodels.searchFragment.SearchViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,12 +22,29 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = SearchFragmentBinding.inflate(inflater, container, false)
-        searchViewModel.search("Tenet")
         searchViewModel.movies.observe(viewLifecycleOwner){
             filmAdapter.setMovies(it)
+            binding.filmsShimmer.stopShimmer()
+            binding.filmsShimmer.visibility = View.GONE
+            if (it.isEmpty()){
+                binding.nullPlug.visibility = View.VISIBLE
+            }
+            else{
+                binding.nullPlug.visibility = View.GONE
+            }
+        }
+        binding.searchBtn.setOnClickListener {
+            val searchPhrase = binding.searchView.text.toString()
+            searchViewModel.search(searchPhrase)
+            filmAdapter.deleteMovies()
+            binding.nullPlug.visibility = View.GONE
+            if (searchPhrase!=""){
+                binding.filmsShimmer.visibility = View.VISIBLE
+                binding.filmsShimmer.startShimmer()
+            }
         }
         binding.moviesRV.adapter = filmAdapter
-        binding.moviesRV.layoutManager = StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.HORIZONTAL)
+        binding.moviesRV.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
         return binding.root
     }
 

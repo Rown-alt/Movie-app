@@ -1,5 +1,6 @@
 package com.example.movieapp.fragments.abstractions
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -72,6 +73,10 @@ abstract class FilmDetailsAbstractFragment: Fragment() {
             binding.actorsCount.text = it.size.toString()
         }
 
+        binding.favouriteState.setOnClickListener {
+            changeFavouriteState()
+        }
+
         binding.similarFilmsRV.adapter = similarsAdapter
         binding.similarFilmsRV.layoutManager = StaggeredGridLayoutManager(1,
             StaggeredGridLayoutManager.HORIZONTAL)
@@ -81,6 +86,7 @@ abstract class FilmDetailsAbstractFragment: Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setMovieLayout(movie: MovieById, view: View){
         Glide.with(view).load(movie.logoUrl).into(binding.logo)
         if (movie.coverUrl == null){
@@ -111,4 +117,7 @@ abstract class FilmDetailsAbstractFragment: Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = movie.nameRu
     }
 
+    private fun changeFavouriteState(){
+       binding.favouriteState.isSelected = !binding.favouriteState.isSelected
+    }
 }

@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val topLevelDestinations = setOf(R.id.moviesFragment,
-            R.id.searchFragment)
+            R.id.searchFragment, R.id.favouritesFragment)
         val appBarConfiguration = AppBarConfiguration.Builder(topLevelDestinations)
             .build()
         setTheme(R.style.Theme_MovieApp)

@@ -6,13 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".fragments.SearchFragment">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:elevation="15dp"
+        android:background="@drawable/gray_rectangle"
+        app:layout_constraintTop_toTopOf="@id/searchView"
+        app:layout_constraintBottom_toBottomOf="@id/searchView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <EditText
         android:id="@+id/searchView"
         android:hint ="@string/insert_film_name"
+        android:elevation="15dp"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
+        android:textSize="14sp"
+        android:backgroundTint="@color/very_light_gray"
         app:layout_constraintEnd_toStartOf="@id/searchBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,13 +36,17 @@
         android:id="@+id/searchBtn"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/search"
+        android:elevation="15dp"
+        android:stateListAnimator="@null"
+        android:translationZ="15dp"
         app:cornerRadius="30dp"
-        android:background="@drawable/union"
-        app:layout_constraintStart_toEndOf="@id/searchView"
+        app:layout_constraintBottom_toBottomOf="@id/searchView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/searchView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/searchView"/>
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/nullPlug"

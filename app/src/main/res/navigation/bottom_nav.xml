@@ -5,4 +5,5 @@
     app:startDestination="@id/home_page">
 <include app:graph="@navigation/app_nav"/>
 <include app:graph="@navigation/search_nav"/>
+<include app:graph="@navigation/favourite_nav"/>
 </navigation>

@@ -3,17 +3,17 @@
     <item
         android:id="@+id/home_page"
         android:enabled="true"
-        android:icon="@drawable/house_black_silhouette_without_door"
+        android:icon="@drawable/home_states"
         android:title="Главное"
         />
     <item
         android:id="@+id/my_films"
         android:enabled="true"
-        android:icon="@drawable/bookmark"
-        android:title="Мое"/>
+        android:icon="@drawable/favourite_states"
+        android:title="Моё"/>
     <item
         android:id="@+id/search_page"
         android:enabled="true"
-        android:icon="@drawable/search_interface_symbol"
+        android:icon="@drawable/search"
         android:title="Поиск"/>
 </menu>

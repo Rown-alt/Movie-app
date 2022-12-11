@@ -26,10 +26,12 @@ class FilmsByKeywordAdapter : RecyclerView.Adapter<FilmsByKeywordAdapter.MovieVi
         @SuppressLint("SetTextI18n")
         fun bind(film: FilmByKeyword) {
             if (film.genres.isNotEmpty()){
-                genres = film.genres[0].genre
+                val filmGenre = film.genres.iterator()
+                while (filmGenre.hasNext()){
+                    genre.text = "${genre.text}${filmGenre.next().genre}, "
+                }
             }
             name.text = film.nameRu
-            genre.text = genres
             Glide.with(itemView).load(film.posterUrlPreview).into(image)
             description.text = film.description
             filmLength.text = "${film.filmLength} мин"

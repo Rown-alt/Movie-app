@@ -28,10 +28,10 @@ class MovieByIdAdapter : RecyclerView.Adapter<MovieByIdAdapter.SeriesViewHolder>
         fun bind(series : MovieById){
             rating.text = series.ratingKinopoisk.toString()
             when {
-                series.ratingKinopoisk < 5 -> {
+                series.ratingKinopoisk!! < 5 -> {
                     rating.setBackgroundColor(Color.parseColor("#FFAD0000"))
                 }
-                series.ratingKinopoisk < 7.0 -> {
+                series.ratingKinopoisk!! < 7.0 -> {
                     rating.setBackgroundColor(Color.parseColor("#FFAFAFAF"))
                 }
                 else -> {
@@ -55,7 +55,7 @@ class MovieByIdAdapter : RecyclerView.Adapter<MovieByIdAdapter.SeriesViewHolder>
         holder.bind(seriesList[position])
         Log.e("AAA","a")
         holder.itemView.setOnClickListener{
-            val action = MoviesFragmentDirections.actionMoviesFragmentToDetailsFragment(seriesList[position].kinopoiskId)
+            val action = MoviesFragmentDirections.actionMoviesFragmentToDetailsFragment(seriesList[position].kinopoiskId!!)
             it.findNavController().navigate(action)
             Log.e("AAA", "Data sent")
         }

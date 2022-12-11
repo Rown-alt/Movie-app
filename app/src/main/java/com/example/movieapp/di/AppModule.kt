@@ -5,6 +5,7 @@ import com.example.movieapp.api.ResultCallAdapterFactory
 import com.example.movieapp.repository.Repository
 import com.example.movieapp.repository.RepositoryImpl
 import com.example.movieapp.viewmodels.ActorViewModel
+import com.example.movieapp.viewmodels.FavouritesViewModel
 import com.example.movieapp.viewmodels.detailsFragment.DetailsFragmentViewModel
 import com.example.movieapp.viewmodels.moviesFragment.MoviesScreenViewModel
 import com.example.movieapp.viewmodels.searchFragment.SearchViewModel
@@ -37,7 +38,11 @@ val appModule = module{
     }
 
     viewModel{
-        DetailsFragmentViewModel(get())
+        DetailsFragmentViewModel(get(), filmDao = get())
+    }
+
+    viewModel{
+        FavouritesViewModel(get())
     }
 
     viewModel{

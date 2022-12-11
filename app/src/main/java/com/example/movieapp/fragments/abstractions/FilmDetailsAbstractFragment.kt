@@ -3,6 +3,7 @@ package com.example.movieapp.fragments.abstractions
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,24 +12,28 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
+import com.example.data.AppDatabase
+import com.example.data.Film
+import com.example.data.FilmDao
 import com.example.movieapp.R
 import com.example.movieapp.adapter.ActorsAdapter
 import com.example.movieapp.adapter.SimilarsAdapter
 import com.example.movieapp.databinding.DetailsScreenBinding
+import com.example.movieapp.di.dataModule
 import com.example.movieapp.fragments.DetailsFragmentArgs
 import com.example.movieapp.fragments.ErrorFragment
 import com.example.movieapp.models.MovieById
 import com.example.movieapp.viewmodels.detailsFragment.DetailsFragmentViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-abstract class FilmDetailsAbstractFragment: Fragment() {
+abstract class FilmDetailsAbstractFragment(): Fragment() {
     private var _binding : DetailsScreenBinding? = null
     private val binding get() = _binding!!
     private val detailsFragmentViewModel : DetailsFragmentViewModel by viewModel()
-
     protected var actorAdapter = ActorsAdapter()
     private var similarsAdapter = SimilarsAdapter()
     private var _filmId = 0
+    private var film = MovieById()
 
     protected fun setFilmId(filmId: Int){
         _filmId = filmId
@@ -37,8 +42,8 @@ abstract class FilmDetailsAbstractFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         detailsFragmentViewModel.getMovieById(_filmId)
-        detailsFragmentViewModel.getStaff(_filmId)
-        detailsFragmentViewModel.getSimilars(_filmId)
+        //detailsFragmentViewModel.getStaff(_filmId)
+        //detailsFragmentViewModel.getSimilars(_filmId)
     }
 
     override fun onCreateView(
@@ -47,6 +52,27 @@ abstract class FilmDetailsAbstractFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = DetailsScreenBinding.inflate(inflater, container, false)
+        observeViewModel()
+        binding.favouriteState.setOnClickListener {
+            changeFavouriteState()
+            if (binding.favouriteState.isSelected){
+                detailsFragmentViewModel.addFilm(film)
+            }
+            else{
+                detailsFragmentViewModel.deleteFilm(film)
+            }
+        }
+
+        binding.similarFilmsRV.adapter = similarsAdapter
+        binding.similarFilmsRV.layoutManager = StaggeredGridLayoutManager(1,
+            StaggeredGridLayoutManager.HORIZONTAL)
+
+        binding.actorsRV.adapter = actorAdapter
+        binding.actorsRV.layoutManager = StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.HORIZONTAL)
+        return binding.root
+    }
+
+    private fun observeViewModel(){
         detailsFragmentViewModel.exception.observe(viewLifecycleOwner){
             if (it!=null){
                 val bundle = Bundle()
@@ -62,6 +88,12 @@ abstract class FilmDetailsAbstractFragment: Fragment() {
         }
         detailsFragmentViewModel.movieById.observe(viewLifecycleOwner){ movieById->
             setMovieLayout(movieById, requireView())
+            film = movieById
+            detailsFragmentViewModel.checkFavourite(movieById.kinopoiskId!!)
+        }
+
+        detailsFragmentViewModel.favouriteState.observe(viewLifecycleOwner){
+            binding.favouriteState.isSelected = it
         }
 
         detailsFragmentViewModel.similarFilms.observe(viewLifecycleOwner){
@@ -72,18 +104,6 @@ abstract class FilmDetailsAbstractFragment: Fragment() {
             actorAdapter.setActors(it)
             binding.actorsCount.text = it.size.toString()
         }
-
-        binding.favouriteState.setOnClickListener {
-            changeFavouriteState()
-        }
-
-        binding.similarFilmsRV.adapter = similarsAdapter
-        binding.similarFilmsRV.layoutManager = StaggeredGridLayoutManager(1,
-            StaggeredGridLayoutManager.HORIZONTAL)
-
-        binding.actorsRV.adapter = actorAdapter
-        binding.actorsRV.layoutManager = StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.HORIZONTAL)
-        return binding.root
     }
 
     @SuppressLint("SetTextI18n")
@@ -95,11 +115,11 @@ abstract class FilmDetailsAbstractFragment: Fragment() {
         else{
             Glide.with(view).load(movie.coverUrl).into(binding.cover)
         }
-        if (movie.ratingKinopoisk < 5)
+        if (movie.ratingKinopoisk!! < 5)
         {
             binding.rating.setTextColor(Color.parseColor("#FFAD0000"))
         }
-        else if (movie.ratingKinopoisk < 7){
+        else if (movie.ratingKinopoisk!! < 7){
             binding.rating.setTextColor(Color.parseColor("#FFAFAFAF"))
         }
 

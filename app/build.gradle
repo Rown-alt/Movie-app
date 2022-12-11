@@ -12,7 +12,7 @@ android {
     }
     defaultConfig {
         applicationId "com.example.movieapp"
-        minSdk 21
+        minSdk 23
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -41,6 +41,8 @@ dependencies {
     //Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.room:room-ktx:2.4.3'
+    implementation project(path: ':data')
     var lifecycle_version = "2.4.1"
     var koin_version = "3.2.0-beta-1"
     //Koin

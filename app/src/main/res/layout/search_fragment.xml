@@ -26,6 +26,9 @@
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
         android:textSize="14sp"
+        android:inputType="textImeMultiLine"
+        android:imeOptions="actionSearch"
+        android:maxLines="1"
         android:backgroundTint="@color/very_light_gray"
         app:layout_constraintEnd_toStartOf="@id/searchBtn"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,6 +79,7 @@
         tools:listitem="@layout/film_by_keyword"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:spanCount="1"/>
+
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/filmsShimmer"
         android:layout_width="match_parent"

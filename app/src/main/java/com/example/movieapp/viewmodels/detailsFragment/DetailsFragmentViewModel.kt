@@ -1,15 +1,20 @@
 package com.example.movieapp.viewmodels.detailsFragment
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.data.Film
+import com.example.data.FilmDao
 import com.example.movieapp.models.MovieById
 import com.example.movieapp.models.Person
 import com.example.movieapp.models.similars.Similar
 import com.example.movieapp.repository.Repository
+import com.example.movieapp.viewmodels.DataViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class DetailsFragmentViewModel(private val repository: Repository) : ViewModel() {
+class DetailsFragmentViewModel(private val repository: Repository, filmDao: FilmDao) : DataViewModel(filmDao) {
     var movieById = MutableLiveData<MovieById>()
     var similarFilms = MutableLiveData<ArrayList<Similar>>()
     var exception = MutableLiveData<String>()

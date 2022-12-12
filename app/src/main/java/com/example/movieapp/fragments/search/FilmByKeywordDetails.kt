@@ -1,8 +1,7 @@
-package com.example.movieapp.fragments
+package com.example.movieapp.fragments.search
 
 import android.content.Context
 import androidx.navigation.fragment.navArgs
-import com.example.data.FilmDao
 import com.example.movieapp.fragments.abstractions.FilmDetailsAbstractFragment
 
 class FilmByKeywordDetails: FilmDetailsAbstractFragment() {

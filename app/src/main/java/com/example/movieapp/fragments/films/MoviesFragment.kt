@@ -1,7 +1,6 @@
-package com.example.movieapp.fragments
+package com.example.movieapp.fragments.films
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +13,7 @@ import com.example.movieapp.adapter.MoviesAdapter
 import com.example.movieapp.adapter.MovieByIdAdapter
 import com.example.movieapp.adapter.TopAdapter
 import com.example.movieapp.databinding.MoviesScreenBinding
+import com.example.movieapp.fragments.ErrorFragment
 import com.example.movieapp.viewmodels.moviesFragment.MoviesScreenViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.random.Random

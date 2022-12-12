@@ -1,4 +1,4 @@
-package com.example.movieapp.fragments
+package com.example.movieapp.fragments.films
 
 import android.content.Context
 import androidx.navigation.fragment.navArgs

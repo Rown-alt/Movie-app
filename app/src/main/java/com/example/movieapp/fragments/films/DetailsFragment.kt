@@ -1,11 +1,10 @@
-package com.example.movieapp.fragments
+package com.example.movieapp.fragments.films
 
 import android.content.Context
 import androidx.navigation.fragment.navArgs
-import com.example.data.FilmDao
 import com.example.movieapp.fragments.abstractions.FilmDetailsAbstractFragment
 
-class DetailsFragment : FilmDetailsAbstractFragment() {
+class DetailsFragment: FilmDetailsAbstractFragment() {
     private val filmArgs: DetailsFragmentArgs by navArgs()
 
     override fun onAttach(context: Context) {

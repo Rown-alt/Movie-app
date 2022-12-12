@@ -1,4 +1,4 @@
-package com.example.movieapp.fragments
+package com.example.movieapp.fragments.favourites
 
 import android.os.Bundle
 import android.util.Log

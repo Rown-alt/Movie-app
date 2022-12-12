@@ -1,4 +1,4 @@
-package com.example.movieapp.fragments
+package com.example.movieapp.fragments.search
 
 import android.app.Activity
 import android.content.Context
@@ -45,6 +45,7 @@ class SearchFragment : Fragment() {
                 binding.filmsShimmer.visibility = View.VISIBLE
                 binding.filmsShimmer.startShimmer()
             }
+            hideKeyboard(requireActivity(), requireView())
         }
         binding.searchView.setOnEditorActionListener { textView, _, _ ->
             val searchPhrase = textView.text.toString()
@@ -58,6 +59,15 @@ class SearchFragment : Fragment() {
             hideKeyboard(requireActivity(), textView)
             true
         }
+        binding.searchView.setOnFocusChangeListener { view, b ->
+            if (view.hasFocus()){
+                binding.searchBackground.visibility = View.VISIBLE
+            }
+            else{
+                binding.searchBackground.visibility = View.INVISIBLE
+            }
+        }
+
         binding.moviesRV.adapter = filmAdapter
         binding.moviesRV.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
         return binding.root

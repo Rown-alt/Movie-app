@@ -9,7 +9,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.databinding.FilmByKeywordBinding
-import com.example.movieapp.fragments.SearchFragmentDirections
+import com.example.movieapp.fragments.search.SearchFragmentDirections
 import com.example.movieapp.models.films_by_keyword.FilmByKeyword
 
 class FilmsByKeywordAdapter : RecyclerView.Adapter<FilmsByKeywordAdapter.MovieViewHolder>() {

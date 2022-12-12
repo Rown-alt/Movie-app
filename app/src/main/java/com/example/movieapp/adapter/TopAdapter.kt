@@ -11,11 +11,9 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.movieapp.R
 import com.example.movieapp.databinding.FilmBinding
-import com.example.movieapp.fragments.MoviesFragmentDirections
+import com.example.movieapp.fragments.films.MoviesFragmentDirections
 import com.example.movieapp.models.top_of_films.FilmsTop
-import com.example.movieapp.models.top_of_films.TopOfFilms
 
 class TopAdapter :RecyclerView.Adapter<TopAdapter.FilmViewHolder>() {
     private var filmList = ArrayList<FilmsTop>()

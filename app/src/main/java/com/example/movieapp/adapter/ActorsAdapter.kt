@@ -1,7 +1,6 @@
 package com.example.movieapp.adapter
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +10,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
-import com.example.movieapp.fragments.DetailsFragmentDirections
-import com.example.movieapp.fragments.FilmByKeywordDetails
-import com.example.movieapp.fragments.FilmByKeywordDetailsDirections
+import com.example.movieapp.fragments.films.DetailsFragmentDirections
+import com.example.movieapp.fragments.search.FilmByKeywordDetailsDirections
 import com.example.movieapp.models.Person
 
 class ActorsAdapter : RecyclerView.Adapter<ActorsAdapter.ActorViewHolder>() {
@@ -53,17 +51,20 @@ class ActorsAdapter : RecyclerView.Adapter<ActorsAdapter.ActorViewHolder>() {
                     it.findNavController().navigate(action)
                 }
             }
-
         }
-
-
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (filmType=="FilmByKeyword"){
-            1
-        } else{
-            0
+        return when (filmType) {
+            "FilmByKeyword" -> {
+                1
+            }
+            "Favourites" -> {
+                2
+            }
+            else -> {
+                0
+            }
         }
     }
 

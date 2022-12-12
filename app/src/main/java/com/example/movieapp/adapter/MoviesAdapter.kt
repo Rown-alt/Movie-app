@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
 import com.example.movieapp.databinding.FilmBinding
-import com.example.movieapp.fragments.MoviesFragmentDirections
+import com.example.movieapp.fragments.films.MoviesFragmentDirections
 import com.example.movieapp.models.Movie
 
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {

@@ -1,30 +1,26 @@
 package com.example.movieapp.fragments.abstractions
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
-import com.example.data.AppDatabase
-import com.example.data.Film
-import com.example.data.FilmDao
 import com.example.movieapp.R
 import com.example.movieapp.adapter.ActorsAdapter
 import com.example.movieapp.adapter.SimilarsAdapter
 import com.example.movieapp.databinding.DetailsScreenBinding
-import com.example.movieapp.di.dataModule
-import com.example.movieapp.fragments.DetailsFragmentArgs
 import com.example.movieapp.fragments.ErrorFragment
 import com.example.movieapp.models.MovieById
 import com.example.movieapp.viewmodels.detailsFragment.DetailsFragmentViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 abstract class FilmDetailsAbstractFragment(): Fragment() {
     private var _binding : DetailsScreenBinding? = null
@@ -34,6 +30,8 @@ abstract class FilmDetailsAbstractFragment(): Fragment() {
     private var similarsAdapter = SimilarsAdapter()
     private var _filmId = 0
     private var film = MovieById()
+    private var kinoPoiskUrl = ""
+
 
     protected fun setFilmId(filmId: Int){
         _filmId = filmId
@@ -63,6 +61,11 @@ abstract class FilmDetailsAbstractFragment(): Fragment() {
             }
         }
 
+        binding.openBtn.setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(kinoPoiskUrl))
+            startActivity(browserIntent)
+        }
+
         binding.similarFilmsRV.adapter = similarsAdapter
         binding.similarFilmsRV.layoutManager = StaggeredGridLayoutManager(1,
             StaggeredGridLayoutManager.HORIZONTAL)
@@ -89,6 +92,7 @@ abstract class FilmDetailsAbstractFragment(): Fragment() {
         detailsFragmentViewModel.movieById.observe(viewLifecycleOwner){ movieById->
             setMovieLayout(movieById, requireView())
             film = movieById
+            kinoPoiskUrl = movieById.webUrl!!
             detailsFragmentViewModel.checkFavourite(movieById.kinopoiskId!!)
         }
 

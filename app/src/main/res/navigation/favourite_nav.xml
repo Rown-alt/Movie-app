@@ -6,6 +6,18 @@
 
     <fragment
         android:id="@+id/favouritesFragment"
-        android:name="com.example.movieapp.fragments.FavouritesFragment"
-        android:label="Моё" />
+        android:name="com.example.movieapp.fragments.favourites.FavouritesFragment"
+        android:label="Моё" >
+        <action
+            android:id="@+id/action_favouritesFragment_to_favouritesDetailsFragment"
+            app:destination="@id/favouritesDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouritesDetailsFragment"
+        android:name="com.example.movieapp.fragments.favourites.FavouritesDetailsFragment"
+        android:label="FavouritesDetailsFragment" >
+        <argument
+            android:name="filmId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

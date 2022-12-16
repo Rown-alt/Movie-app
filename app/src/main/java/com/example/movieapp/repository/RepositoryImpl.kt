@@ -1,6 +1,7 @@
 package com.example.movieapp.repository
 
 import com.example.movieapp.api.KinoPoiskAPI
+import com.example.movieapp.models.FiltersRequest
 import com.example.movieapp.models.MovieById
 import com.example.movieapp.models.MovieList
 import com.example.movieapp.models.Person
@@ -36,5 +37,9 @@ class RepositoryImpl(private val api: KinoPoiskAPI): Repository {
 
     override suspend fun getSearch(keyword: String, page: Int): Result<FilmsByKeyword> {
         return api.getSearch(keyword, page)
+    }
+
+    override suspend fun getFilters(): Result<FiltersRequest> {
+        return api.getFilters()
     }
 }

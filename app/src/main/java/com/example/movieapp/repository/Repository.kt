@@ -1,6 +1,7 @@
 package com.example.movieapp.repository
 
 import com.example.movieapp.api.header
+import com.example.movieapp.models.FiltersRequest
 import com.example.movieapp.models.MovieById
 import com.example.movieapp.models.MovieList
 import com.example.movieapp.models.Person
@@ -25,4 +26,6 @@ interface Repository {
     suspend fun getSimilars(@Path("id") movieId : Int) : Result<SimilarsList>
 
     suspend fun getSearch(@Query("keyword") keyword : String, @Query("page") page : Int) : Result<FilmsByKeyword>
+
+    suspend fun getFilters(): Result<FiltersRequest>
 }

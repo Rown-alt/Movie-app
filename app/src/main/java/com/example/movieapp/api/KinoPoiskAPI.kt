@@ -1,5 +1,6 @@
 package com.example.movieapp.api
 
+import com.example.movieapp.models.FiltersRequest
 import com.example.movieapp.models.actorById.ActorById
 import com.example.movieapp.models.MovieById
 import com.example.movieapp.models.MovieList
@@ -37,4 +38,8 @@ interface KinoPoiskAPI {
     @Headers(header)
     @GET("v2.1/films/search-by-keyword")
     suspend fun getSearch(@Query("keyword") keyword : String, @Query("page") page : Int) : Result<FilmsByKeyword>
+
+    @Headers(header)
+    @GET("v2.2/films/filters")
+    suspend fun getFilters(): Result<FiltersRequest>
 }

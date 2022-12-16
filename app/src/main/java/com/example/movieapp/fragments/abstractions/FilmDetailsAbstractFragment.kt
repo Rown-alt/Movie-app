@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
@@ -64,6 +65,14 @@ abstract class FilmDetailsAbstractFragment(): Fragment() {
         binding.openBtn.setOnClickListener {
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(kinoPoiskUrl))
             startActivity(browserIntent)
+        }
+
+        binding.shareBtn.setOnClickListener {
+            val shareIntent = Intent()
+            shareIntent.action = Intent.ACTION_SEND
+            shareIntent.putExtra(Intent.EXTRA_TEXT, kinoPoiskUrl)
+            shareIntent.type = "text/plain"
+            startActivity(Intent.createChooser(shareIntent, "Поделиться с:"))
         }
 
         binding.similarFilmsRV.adapter = similarsAdapter
@@ -126,7 +135,7 @@ abstract class FilmDetailsAbstractFragment(): Fragment() {
         else if (movie.ratingKinopoisk!! < 7){
             binding.rating.setTextColor(Color.parseColor("#FFAFAFAF"))
         }
-
+        //binding.title.text = movie.nameOriginal
         binding.nameOriginal.text = movie.nameOriginal
         binding.rating.text = movie.ratingKinopoisk.toString()
         val ageLimit = movie.ratingAgeLimits?.filter { it.isDigit() }
@@ -137,7 +146,9 @@ abstract class FilmDetailsAbstractFragment(): Fragment() {
         binding.genresDetails.text = movie.genres[0].genre
         binding.description.text = movie.description
         binding.actorsCount.text
-
+//        binding.backpressBtn.setOnClickListener{
+//            it.findNavController().popBackStack()
+//        }
         (activity as AppCompatActivity).supportActionBar?.title = movie.nameRu
     }
 

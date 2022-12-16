@@ -17,7 +17,7 @@
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageView
             android:id="@+id/coverMask"
@@ -30,26 +30,72 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/favouriteState"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="20dp"
-            android:backgroundTint="@android:color/transparent"
-            android:scaleType="fitCenter"
-            android:src="@drawable/favourite_states"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
             android:id="@+id/openBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
             android:backgroundTint="@android:color/transparent"
             android:scaleType="fitCenter"
             android:src="@drawable/share"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toStartOf="@id/shareBtn"
+            app:layout_constraintTop_toBottomOf="@id/coverMask"
+            tools:ignore="SpeakableTextPresentCheck" />
+        <TextView
+            android:id="@+id/favouritesTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="В избранное"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@id/favouriteState"
+            app:layout_constraintEnd_toEndOf="@id/favouriteState"
+            app:layout_constraintTop_toBottomOf="@id/favouriteState"/>
+
+        <ImageButton
+            android:id="@+id/shareBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:backgroundTint="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/share_ic"
+            app:layout_constraintStart_toEndOf="@id/openBtn"
+            app:layout_constraintEnd_toStartOf="@id/favouriteState"
+            app:layout_constraintTop_toBottomOf="@id/coverMask"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/shareTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Поделиться"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@id/shareBtn"
+            app:layout_constraintEnd_toEndOf="@id/shareBtn"
+            app:layout_constraintTop_toBottomOf="@id/shareBtn"/>
+
+        <ImageButton
+            android:id="@+id/favouriteState"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:backgroundTint="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/favourite_states"
+            app:layout_constraintStart_toEndOf="@id/shareBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/coverMask"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/openTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Смотреть"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@id/openBtn"
+            app:layout_constraintEnd_toEndOf="@id/openBtn"
+            app:layout_constraintTop_toBottomOf="@id/openBtn"/>
 
         <ImageView
             android:id="@+id/logo"
@@ -183,13 +229,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="3dp"
             android:fontFamily="@font/poppins"
             android:textSize="14dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cover" />
+            app:layout_constraintTop_toBottomOf="@+id/openTitle" />
 
         <TextView
             android:id="@+id/actorsTitle"

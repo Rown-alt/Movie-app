@@ -13,16 +13,13 @@
         >
         <TextView
             android:id="@+id/randomFilmsTitle"
+            style="@style/TitleFirst"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="14dp"
             android:layout_marginTop="11dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_bold"
             android:text="Random FIlm"
-            android:textSize="17sp"
-            android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -70,16 +67,13 @@
 
         <TextView
             android:id="@+id/premieresTitle"
+            style="@style/TitleFirst"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="14dp"
             android:layout_marginTop="11dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_bold"
             android:text="Premieres"
-            android:textSize="17sp"
-            android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/randomFilmName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -123,16 +117,13 @@
 
         <TextView
             android:id="@+id/seriesTitle"
+            style="@style/TitleFirst"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="14dp"
             android:layout_marginTop="11dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_bold"
             android:text="Recommended series"
-            android:textSize="17sp"
-            android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/moviesRV"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -175,16 +166,13 @@
 
         <TextView
             android:id="@+id/topTitle"
+            style="@style/TitleFirst"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="14dp"
             android:layout_marginTop="11dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_bold"
             android:text="Top 20 of the day"
-            android:textSize="17sp"
-            android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/seriesRV"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

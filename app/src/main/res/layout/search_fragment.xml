@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".fragments.search.SearchFragment">
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="10dp"
+        android:text="Поиск"
+        android:visibility="gone"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <ImageView
         android:id="@+id/searchBackground"
         android:layout_width="match_parent"
@@ -38,6 +53,7 @@
         android:layout_height="60dp"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:textSize="14sp"
         android:inputType="textImeMultiLine"
         android:imeOptions="actionSearch"
@@ -45,7 +61,7 @@
         android:backgroundTint="@color/very_light_gray"
         app:layout_constraintEnd_toStartOf="@id/searchBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
         app:queryHint="Type a name of film" />
 
     <com.google.android.material.button.MaterialButton
@@ -61,7 +77,7 @@
         app:layout_constraintBottom_toBottomOf="@id/searchView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/searchView"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/searchView"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <TextView
@@ -80,11 +96,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
+    <TextView
+        android:id="@+id/genresTitle"
+        style="@style/TitleFirst"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Жанры"
+        app:layout_constraintTop_toBottomOf="@id/searchView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+        android:id="@+id/countriesTitle"
+        style="@style/TitleFirst"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Страны"
+        app:layout_constraintTop_toBottomOf="@id/genresRv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/moviesRV"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView"
@@ -92,6 +129,35 @@
         tools:listitem="@layout/film_by_keyword"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:spanCount="1"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/genresRv"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/genresTitle"
+        tools:listitem="@layout/filter"
+        app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+        app:spanCount="2"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/countriesRv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/countriesTitle"
+        app:spanCount="2"
+        tools:listitem="@layout/filter" />
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/filmsShimmer"

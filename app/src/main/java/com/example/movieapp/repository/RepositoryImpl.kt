@@ -42,4 +42,12 @@ class RepositoryImpl(private val api: KinoPoiskAPI): Repository {
     override suspend fun getFilters(): Result<FiltersRequest> {
         return api.getFilters()
     }
+
+    override suspend fun getFilms(
+        keyword: String,
+        countries: ArrayList<Int>,
+        genres: ArrayList<Int>
+    ): Result<MovieList> {
+        return api.getFilms(keyword, countries, genres)
+    }
 }

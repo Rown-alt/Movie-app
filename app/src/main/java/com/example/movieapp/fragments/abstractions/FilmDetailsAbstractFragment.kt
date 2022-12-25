@@ -17,6 +17,7 @@ import com.example.movieapp.R
 import com.example.movieapp.adapter.ActorsAdapter
 import com.example.movieapp.adapter.SimilarsAdapter
 import com.example.movieapp.databinding.DetailsScreenBinding
+import com.example.movieapp.databinding.FilmDetailsBinding
 import com.example.movieapp.fragments.ErrorFragment
 import com.example.movieapp.models.MovieById
 import com.example.movieapp.viewmodels.detailsFragment.DetailsFragmentViewModel
@@ -24,7 +25,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 abstract class FilmDetailsAbstractFragment(): Fragment() {
-    private var _binding : DetailsScreenBinding? = null
+    private var _binding : FilmDetailsBinding? = null
     private val binding get() = _binding!!
     private val detailsFragmentViewModel : DetailsFragmentViewModel by viewModel()
     protected var actorAdapter = ActorsAdapter()
@@ -41,8 +42,8 @@ abstract class FilmDetailsAbstractFragment(): Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         detailsFragmentViewModel.getMovieById(_filmId)
-        //detailsFragmentViewModel.getStaff(_filmId)
-        //detailsFragmentViewModel.getSimilars(_filmId)
+        detailsFragmentViewModel.getStaff(_filmId)
+        detailsFragmentViewModel.getSimilars(_filmId)
     }
 
     override fun onCreateView(
@@ -50,7 +51,7 @@ abstract class FilmDetailsAbstractFragment(): Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DetailsScreenBinding.inflate(inflater, container, false)
+        _binding = FilmDetailsBinding.inflate(inflater, container, false)
         observeViewModel()
         binding.favouriteState.setOnClickListener {
             changeFavouriteState()

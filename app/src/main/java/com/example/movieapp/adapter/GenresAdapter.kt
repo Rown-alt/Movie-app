@@ -10,6 +10,8 @@ import com.example.movieapp.models.FiltersRequest
 
 class GenresAdapter: RecyclerView.Adapter<GenresAdapter.FilterViewHolder>() {
     private var filters: List<FiltersRequest.Genre> = listOf()
+    var selectedPosition = -1
+
 
     class FilterViewHolder(binding: FilterBinding): RecyclerView.ViewHolder(binding.root) {
         private val title: TextView = binding.filterTitle
@@ -29,8 +31,16 @@ class GenresAdapter: RecyclerView.Adapter<GenresAdapter.FilterViewHolder>() {
         return FilterViewHolder(view)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: FilterViewHolder, position: Int) {
         holder.bindGenres(filters[position])
+//
+//        holder.itemView.setOnClickListener {
+//            selectedPosition = position
+//            notifyDataSetChanged()
+//        }
+//
+//        holder.itemView.isSelected = selectedPosition == position
     }
 
     override fun getItemCount(): Int {

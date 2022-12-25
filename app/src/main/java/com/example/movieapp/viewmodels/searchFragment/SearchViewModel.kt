@@ -6,12 +6,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movieapp.models.FiltersRequest
 import com.example.movieapp.models.Movie
+import com.example.movieapp.models.MovieList
 import com.example.movieapp.models.films_by_keyword.FilmByKeyword
 import com.example.movieapp.repository.Repository
 import kotlinx.coroutines.launch
 
 class SearchViewModel(private val repository: Repository) : ViewModel() {
     val movies = MutableLiveData<ArrayList<FilmByKeyword>>()
+    val films = MutableLiveData<MovieList>()
     var exception = MutableLiveData<String>()
     var filters = MutableLiveData<FiltersRequest>()
 
@@ -44,6 +46,21 @@ class SearchViewModel(private val repository: Repository) : ViewModel() {
                 }
             }
             catch (exc: Exception){}
+        }
+    }
+
+    fun getFilms(keyword: String, countries: ArrayList<Int>, genres: ArrayList<Int>){
+        viewModelScope.launch {
+            try{
+                val request = repository.getFilms(keyword, countries, genres)
+                request.onSuccess {
+                    films.value = it
+                }
+                request.onFailure { msg->
+                    exception.value = msg.localizedMessage
+                }
+            }
+            catch (_: Exception){}
         }
     }
 }

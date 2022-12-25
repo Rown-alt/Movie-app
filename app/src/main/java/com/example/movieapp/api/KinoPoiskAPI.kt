@@ -42,4 +42,8 @@ interface KinoPoiskAPI {
     @Headers(header)
     @GET("v2.2/films/filters")
     suspend fun getFilters(): Result<FiltersRequest>
+
+    @Headers(header)
+    @GET("v2.2/films")
+    suspend fun getFilms(@Query("keyword") keyword: String, @Query("countries") countries: ArrayList<Int>, @Query("countries") genres: ArrayList<Int>): Result<MovieList>
 }

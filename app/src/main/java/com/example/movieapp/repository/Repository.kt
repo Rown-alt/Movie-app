@@ -28,4 +28,6 @@ interface Repository {
     suspend fun getSearch(@Query("keyword") keyword : String, @Query("page") page : Int) : Result<FilmsByKeyword>
 
     suspend fun getFilters(): Result<FiltersRequest>
+
+    suspend fun getFilms(@Query("keyword") keyword: String, @Query("countries") countries: ArrayList<Int>, @Query("countries") genres: ArrayList<Int>): Result<MovieList>
 }

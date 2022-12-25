@@ -26,6 +26,7 @@ class MoviesFragment : Fragment(R.layout.movies_screen){
     private var topAdapter = TopAdapter()
     private val moviesViewModel : MoviesScreenViewModel by viewModel()
     private var randomFilmId : Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         moviesViewModel.getSeries()

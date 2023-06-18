@@ -23,5 +23,6 @@
 
     <style name="nav_component" parent="Widget.AppCompat.Toolbar.Button.Navigation">
         <item name="colorOnPrimary">@color/black</item>
+
     </style>
 </resources>

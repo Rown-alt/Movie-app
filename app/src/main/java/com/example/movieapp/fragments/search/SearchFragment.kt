@@ -49,10 +49,10 @@ class SearchFragment : Fragment() {
             searchViewModel.search(searchPhrase)
             filmAdapter.deleteMovies()
             binding.nullPlug.visibility = View.GONE
-            binding.genresRv.visibility = View.GONE
-            binding.countriesRv.visibility = View.GONE
-            binding.countriesTitle.visibility = View.GONE
-            binding.genresTitle.visibility = View.GONE
+//            binding.genresRv.visibility = View.GONE
+//            binding.countriesRv.visibility = View.GONE
+//            binding.countriesTitle.visibility = View.GONE
+//            binding.genresTitle.visibility = View.GONE
             if (searchPhrase != "") {
                 binding.filmsShimmer.visibility = View.VISIBLE
                 binding.filmsShimmer.startShimmer()
@@ -65,10 +65,10 @@ class SearchFragment : Fragment() {
             searchViewModel.search(searchPhrase)
             filmAdapter.deleteMovies()
             binding.nullPlug.visibility = View.GONE
-            binding.genresRv.visibility = View.GONE
-            binding.countriesRv.visibility = View.GONE
-            binding.countriesTitle.visibility = View.GONE
-            binding.genresTitle.visibility = View.GONE
+//            binding.genresRv.visibility = View.GONE
+//            binding.countriesRv.visibility = View.GONE
+//            binding.countriesTitle.visibility = View.GONE
+//            binding.genresTitle.visibility = View.GONE
             if (searchPhrase!=""){
                 binding.filmsShimmer.visibility = View.VISIBLE
                 binding.filmsShimmer.startShimmer()
@@ -85,17 +85,17 @@ class SearchFragment : Fragment() {
             }
         }
 
-        binding.genresRv.adapter = genresAdapter
+//        binding.genresRv.adapter = genresAdapter
         val flexLayoutManager = FlexboxLayoutManager(requireContext())
         flexLayoutManager.justifyContent = JustifyContent.FLEX_START
         flexLayoutManager.flexDirection = FlexDirection.ROW
-        binding.genresRv.layoutManager = flexLayoutManager
+//        binding.genresRv.layoutManager = flexLayoutManager
 
-        binding.countriesRv.adapter = countriesAdapter
+//        binding.countriesRv.adapter = countriesAdapter
         val flexLayoutManager2 = FlexboxLayoutManager(requireContext())
         flexLayoutManager2.justifyContent = JustifyContent.FLEX_START
         flexLayoutManager2.flexDirection = FlexDirection.ROW
-        binding.countriesRv.layoutManager = flexLayoutManager2
+//        binding.countriesRv.layoutManager = flexLayoutManager2
 
         binding.moviesRV.adapter = filmAdapter
         binding.moviesRV.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)

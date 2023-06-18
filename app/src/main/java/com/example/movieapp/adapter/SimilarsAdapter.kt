@@ -37,11 +37,13 @@ class SimilarsAdapter : RecyclerView.Adapter<SimilarsAdapter.SimilarViewHolder>(
     override fun onBindViewHolder(holder: SimilarViewHolder, position: Int) {
         holder.bind(listSimilars[position])
 
-        holder.itemView.setOnClickListener{
-            val action = DetailsFragmentDirections.actionDetailsFragmentSelf(listSimilars[position].kinopoiskId)
-            it.findNavController().navigate(action)
-            Log.e("AAA", "Data sent to DetailsFragment")
-        }
+        //Сломался поиск по id
+
+//        holder.itemView.setOnClickListener{
+//            val action = DetailsFragmentDirections.actionDetailsFragmentSelf(listSimilars[position].kinopoiskId)
+//            it.findNavController().navigate(action)
+//            Log.e("AAA", "Data sent to DetailsFragment")
+//        }
     }
 
     override fun getItemCount(): Int {
